@@ -1,0 +1,434 @@
+---
+layout: post
+title: Laravel框架基础-1
+date: 2016-11-21 08:32:24.000000000 +09:00
+---
+
+## 1、laravel 概述
+- [ ] laravel的基本特点
+  - [x]  使用PHP新版本的最新特性增加了代码复用性 , 扩展性 . 目前要求PHP 5.5.9以上版本 , 并支持PHP7
+  - [x]  项目基于PHP最先进的包管理工具composer构建
+  - [x]  大量使用了成熟的第三方依赖 , 如symfony , monolog等.
+  - [x]  完全使用组件式开发 , 高度灵活的文件结构 , 可以按需使用组件重构出自己的项目
+  - [x]  基于面向接口编程 , 并广泛使用依赖注入 , 使之非常适合敏捷开发的高速迭代
+  - [x]  支持迁移 , 命令行工具 , 反向路由 , 中间件 , RESTFul 等web开发先进理念
+  - [x]  特别强大的 Eloquent ORM , 对各种关联查询实现得非常全面
+  - [x]  作为全栈式框架 , 实现了队列 , 事件机制 , 异步任务 , 广播 , 统一的计划任务等各种先进功能
+  - [x]  内置登录 ,权限验证等常用功能
+  - [x]  使用了 gulp , node 等先进Web工具进行资源管理
+  - [x]  框架本身通过闭包 , 依赖注入 , IoC容器等手段 , 能够很灵活地扩展基本功能
+  - [x]  能够快速开发和植入扩展包 , 只需要composer和几条命令行
+  - [x]  真正的测试驱动 , 绝大多数底层功能为实现单元测试而构建
+  - [x]  默认支持 git , phpunit 等相关开发技术
+- [ ] 类库管理神器composer
+  - [x] PHP最先进的包管理工具 托管PHP文件的autoload
+  - [x] 直接引入第三方依赖
+  - [x] 发布自己的依赖包
+
+## 2、laravel 安装与配置
+
+###2.1 Composer直接下载安装laraval
+
+```
+1.composer create-project laravel/laravel
+2.composer create-project laravel/laravel  blog
+3.curl -sS https://getcomposer.org/installer | php
+```
+###2.2 一键安装包
+```
+下载地址：http://www.golaravel.com/download/
+打开命令后
+cd /usr/local/bin
+然后执行
+curl -sS https://getcomposer.org/installer | php
+接下来
+sudo mv composer.phar composer
+修改权限
+sudo chmod a+x composer
+```
+###2.3 Github下载
+```
+Download ZIP: https://github.com/laravel/laravel
+```
+
+###2.4 laravel相关配置
+```
+1.wamp的版本要求（PHP版本>=5.5.9|wamp2.5）
+2.开启rewrite模式和vhost(apache/conf/httpd.conf)
+#LoadModule rewrite_module modules/mod_rewrite.so
+#LoadModule vhost_alias_module modules/mod_vhost_alias.so
+3.开启php扩展(php.ini)
+extension=php_openssl.dll
+extension=php_mbstring.dll
+extension=php_pdo_mysql.dll
+```
+
+###2.5 Laravel5.2目录结构
+```
+目录或文件	说明
+｜–　app	包含Controller、Model、路由等在内的应用目录，大部分业务将在该目录下进行
+｜　　｜–　Console	命令行程序目录
+｜　　｜　　｜–　Commands	包含了用于命令行执行的类，可在该目录下自定义类
+｜　　｜　　｜–　Kernel.php	命令调用内核文件，包含commands变量(命令清单，自定义的命令需加入到这里)和schedule方法(用于任务调度，即定时任务)
+｜　　｜–　Events	事件目录
+｜　　｜–　Exceptions	包含了自定义错误和异常处理类
+｜　　｜–　Http	HTTP传输层相关的类目录
+｜　　｜　　｜–　Controllers	控制器目录
+｜　　｜　　｜–　Kernel.php	包含http中间件和路由中间件的内核文件
+｜　　｜　　｜–　Middleware	中间件目录
+｜　　｜　　｜–　Requests	请求类目录
+｜　　｜　　｜–　routes.php	强大的路由
+｜　　｜–　Jobs	该目录下包含队列的任务类
+｜　　｜–　Listeners	监听器目录
+｜　　｜–　Providers	服务提供者目录
+｜　　｜–　User.php	自带的模型实例，我们新建的Model默认也存储在该目录
+｜–　artisan	强大的命令行接口，你可以在app/Console/Commands下编写自定义命令
+｜–　bootstrap	框架启动载入目录
+｜　　｜–　app.php	创建框架应用实例
+｜　　｜–　autoload.php	自动加载
+｜　　｜–　cache	存放框架启动缓存，web服务器需要有该目录的写入权限
+｜–　composer.json	存放依赖关系的文件
+｜–　composer.lock	锁文件，存放安装时依赖包的真实版本
+｜–　config	各种配置文件的目录
+｜　　｜–　app.php	系统级配置文件
+｜　　｜–　auth.php	用户身份认证配置文件，指定好table和model就可以很方便地用身份认证功能了
+｜　　｜–　broadcasting.php	事件广播配置文件
+｜　　｜–　cache.php	缓存配置文件
+｜　　｜–　compile.php	编译额外文件和类需要的配置文件，一般用户很少用到
+｜　　｜–　database.php	数据库配置文件
+｜　　｜–　filesystems.php	文件系统配置文件，这里可以配置云存储参数
+｜　　｜–　mail.php	电子邮件配置文件
+｜　　｜–　queue.php	消息队列配置文件
+｜　　｜–　services.php	可存放第三方服务的配置信息
+｜　　｜–　session.php	配置session的存储方式、生命周期等信息
+｜　　｜–　view.php	模板文件配置文件，包含模板目录和编译目录等
+｜–　database	数据库相关目录
+｜　　｜–　factories	5.1版本的新特性，工厂类目录，也是用于数据填充
+｜　　｜　　｜–　ModelFactory.php	在该文件可定义不同Model所需填充的数据类型
+｜　　｜–　migrations	存储数据库迁移文件
+｜　　｜–　seeds	存放数据填充类的目录
+｜　　　　　｜–　DatabaseSeeder.php	执行php artisan db:seed命令将会调用该类的run方法。该方法可调用执行该目录下其他Seeder类，也可调用factories方法生成ModelFactory里定义的数据模型
+｜–　.env	环境配置文件。config目录下的配置文件会使用该文件里面的参数，不同生产环境使用不同的.env文件即可。
+｜–　gulpfile.js	gulp（一种前端构建工具）配置文件
+｜–　package.json	gulp配置文件
+｜–　phpspec.yml	phpspec（一种PHP测试框架）配置文件
+｜–　phpunit.xml	phpunit（一种PHP测试框架）配置文件
+｜–　public	网站入口，应当将ip或域名指向该目录而不是根目录。可供外部访问的css、js和图片等资源皆放置于此
+｜　　｜–　index.php	入口文件
+｜　　｜–　.htaccess	Apache服务器用该文件重写URL
+｜　　｜–　web.config	IIS服务器用该文件重写URL
+｜–　resources	资源文件目录
+｜　　｜–　assets	可存放包含LESS、SASS、CoffeeScript在内的原始资源文件
+｜　　｜–　lang	本地化文件目录
+｜　　｜–　views	视图文件就放在这啦
+｜–　server.php	PHP内置的Web服务器将把这个文件作为入口。以public/index.php为入口的可以忽略掉该文件
+｜–　storage	存储目录。web服务器需要有该目录及所有子目录的写入权限
+｜　　｜–　app	可用于存储应用程序所需的一些文件？待补充
+｜　　｜–　framework	该目录下包括缓存、sessions和编译后的视图文件
+｜　　｜–　logs	日志目录
+｜–　tests	测试目录
+｜–　vendor	该目录下包含Laravel源代码和第三方依赖包
+```
+###2.6 composer.json配置文件解读
+```
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "pre-update-cmd": [
+            "php artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
+```
+##3、Laravel5.2框架基础
+
+###3.0 artisan命令
+```
+① php artisan route:list //查看路由的方式或者检查文件的缺失
+② php artisan make:controller ArticleController //创建控制器
+③ php artisan //artisn相关命令
+④ php artisan make:middleware AdminLogin //创建中间件
+
+```
+
+
+###3.1 HTTP 路由
+```
+① 注册路由来响应任何HTTP请求
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+② match方法注册路由响应多个HTTP请求
+Route::match(['get', 'post'], '/', function () {
+});
+③ any方法注册一个路由来响应所有 HTTP 请求
+Route::any('foo', function () {
+});
+```
+
+###3.2 路由参数
+
+###3.3 命名路由
+```
+①生成 URL 或重定向
+Route::get('user/profile', ['as' => 'profile', function () {
+echo route('profile');//http://www.laravel.com/user
+    return '<h2>命名路由</h2>';
+}]);
+②为控制器动作指定路由名称
+Route::get('test', [
+    'as' => 'profile', 'uses' => 'Admin\IndexController@index'
+]);
+③路由定义之后使用 name 方法链的方式
+Route::get('test','Admin\IndexController@index')->name('profile');//http://www.laravel.com/test
+④路由前缀+命名空间
+Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
+    Route::get('login','IndexController@login');
+    Route::get('index','IndexController@index');
+});
+```
+
+###3.4 RESTful 资源控制器
+```
+① php artisan route:list //查看路由的方式或者检查文件的缺失
+② php artisan make:controller ArticleController //快速创建控制器
+③ Route::resource('article', 'ArticleController'); //为控制器注册一个资源路由
+④ Route::resource('article', 'ArticleController',
+['except' => ['create', 'store', 'update', 'destroy']]);//只定义部分资源路由
+⑤ Route::get('article/popular', 'ArticleController@method');
+Route::resource('article', 'ArticleController');//补充资源路由，在调用 Route::resource 之前定义这些路由
+```
+
+###3.5 HTTP中间件(过滤HTTP请求层，对路由规则起拦截和保护的作用)
+```
+① php artisan make:middleware OldMiddleware //创建新的中间件
+② 提出前缀和命名空间
+Route::group(['middleware'=>['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::any('index','IndexController@index');//主页
+    Route::any('info','IndexController@info');
+    Route::get('quit','LoginController@quit');//退出
+});
+
+```
+
+###3.6 HTTP视图
+```
+① Route::get('/view', function () {
+    return  view('my_laravel');
+});//通过路由分配视图 （resources/views/my_laravel.blade.php）blade模板引擎
+②   $data = [
+            'name'=>'lensxiong',
+            'sex'=>'male',
+        ];
+        return view('my_laravel',$data);//通过控制器分配视图 接收时直接使用$name,$sex
+③ $data = [
+            'name'=>'lensxiong',
+            'sex'=>'male',
+        ];
+        $title = 'title';
+        return view('my_laravel',compact('data','title'));//compact
+
+```
+
+###3.7 blade模板
+#### session相关
+```
+① 问题：Undefined variable: _SESSION
+原因：laravel没有开启原生的session，导致不能去存储。
+解决：在入口文件处加session_start();打开原生的session
+```
+
+#### 验证码相关
+```
+① 验证码点击事件刷新代码
+onclick="this.src='{{url('admin/code')}}?'+Math.random()"
+```
+
+#### 函数相关
+```
+① Input::all() 等同于tp中的is_post()；
+② back()->with('msg','验证码错误');
+③ Crypt::encrypt($str) //加密
+④ Crypt::decrypt($str_p); //解密
+⑤ $_SERVER 环境服务器相关信息
+⑥ session(['user=>null']);//清除session
+⑦ $input = Input::except('_token');//除之外
+```
+
+#### 相关错误
+```
+10.1 错误：TokenMismatchException in VerifyCsrfToken.php line 67:
+解决：提交的时候加上 {{csrf_field()}}
+10.2 错误：Non-static method App\Http\Model\Category::tree() should not be called statically
+解决一：new 一个对象调用->
+解决二：public static function
+10.3 错误：Fatal error: Using $this when not in object context
+解决：使用类似Category::all();
+10.4 问题: return back()->withErrors($validator)前台无法接收到值
+原因：web中间件从5.2.27版本以后默认全局加载，不需要自己手动载入，如果自己手动重复载入，会导致session无法加载的情况
+解决：php artisan --version看一下版本，如果是5.2.26以上的，在路由处删除web中间件分组
+10.5 问题 create()方法时的黑名单和白名单
+原因：Eloquent ORM —— 起步中的基本更新下的批量赋值
+解决一：protected $guarded = ['price'];//加入黑名单
+解决二：protected $fillable = ['name'];//加入白名单
+10.6 问题：默认选中框
+解决：@if($d->cate_id==$field->cate_pid) selected @endif
+10.7 put提交表单的方法
+解决：<input type="hidden" name="_method" value="put">
+```
+#### php获取服务器操作系统等信息
+```
+ PHP程式版本： <?PHP echo PHP_VERSION; ?>
+ ZEND版本： <?PHP echo zend_version(); ?>
+ MYSQL支持： <?php echo function_exists (mysql_close)?"是":"否"; ?>
+ MySQL数据库持续连接 ： <?php echo @get_cfg_var("mysql.allow_persistent")?"是 ":"否"; ?>
+ MySQL最大连接数： <?php echo @get_cfg_var("mysql.max_links")==-1 ? "不限" : @get_cfg_var("mysql.max_links");?>
+ 服务器操作系统： <?PHP echo PHP_OS; ?>
+ 服务器端信息： <?PHP echo $_SERVER ['SERVER_SOFTWARE']; ?>
+ 最大上传限制： <?PHP echo get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许上传附件"; ?>
+ 最 大执行时间： <?PHP echo get_cfg_var("max_execution_time")."秒 "; ?>
+ 脚本运行占用最大内存： <?PHP echo get_cfg_var ("memory_limit")?get_cfg_var("memory_limit"):"无" ?>
+ 查询当前连接的MYSQL数据库的版本 php自带函数 mysql_get_server_info()
+ 获得服务器系统时间 date_default_timezone_set (PRC); echo date("Y-m-d G:i:s");
+
+ 查询当前连接的MYSQL数据库的版本 php自带函数 mysql_get_server_info()
+ 获得服务器系统时间 date_default_timezone_set (PRC); echo date("Y-m-d G:i:s");
+```
+
+#### 表单验证相关
+```
+① $validator = Validator::make($input,$rules，$messages);
+② $validator->passes()//验证通过
+③ $validator->errors()->all() //验证错误信息
+④  'password'=>'required|between:6,20|confirmed',//验证规则confirmed需要将验证的字段改写成password_confirmation
+
+```
+
+#### CSRF token禁用方法
+
+① 打开文件：app\Http\Kernel.php
+```
+\App\Http\Middleware\VerifyCsrfToken::class,//注释掉
+```
+② 打开文件：app\Http\Middleware\VerifyCsrfToken.php
+```
+use Closure;
+public function handle($request, Closure $next)
+{
+return parent::handle($request, $next);// 使用CSRF
+return $next($request);// 禁用CSRF
+}
+```
+
+#### 文件上传方法
+客户端
+```
+<form method="POST" action="" enctype="muitipart/form-data">
+    <input type="file" name="myfile" />
+    <input type="submit" name="submit" value="Submit" />
+</form>
+```
+服务器端
+```
+$file = Input::file('myfile');
+if($file -> isValid()){
+    //检验一下上传的文件是否有效.
+    $clientName = $file -> getClientOriginalName();  //获取文件名称
+    $tmpName = $file ->getFileName(); // 缓存在tmp文件夹中的文件名 例如 php9372.tmp 这种类型的.
+    $realPath = $file -> getRealPath();    //这个表示的是缓存在tmp文件夹下的文件的绝对路径，例如我的是: C:\wamp\tmp\php9372.tmp
+    $entension = $file -> getClientOriginalExtension(); //上传文件的后缀.
+    $mimeTye = file -> getMimeType();//大家对mimeType应该不陌生了. 我得到的结果是 image/jpeg.
+    $path = $file -> move('storage/uploads');
+  如果你这样写的话,默认是会放置在 我们 public/storage/uploads/php79DB.tmp
+  貌似不是我们希望的,如果我们希望将其放置在app的storage目录下的uploads目录中,并且需要改名的话..
+  $path = $file -> move(app_path().'/storage/uploads',$newName);
+  这里app_path()就是app文件夹所在的路径.$newName 可以是你通过某种算法获得的文件的名称.主要是不能重复产生冲突即可.   比如 $newName = md5(date('ymdhis').$clientName).".".$extension;
+  利用日期和客户端文件名结合 使用md5 算法加密得到结果.不要忘记在后面加上文件原始的拓展名.
+}
+```
+#### 数据库迁移
+```
+① php artisan make:migration create_users_table
+② php artisan migrate
+```
+#### laravel发送邮件
+.env配置信息
+```
+MAIL_DRIVER=smtp //邮件发送驱动:smtp、Mailgun、Maildrill、Amazon SES、mail和sendmail
+MAIL_HOST=smtp.163.com
+MAIL_PORT=25
+MAIL_USERNAME=php28_28@163.com
+MAIL_PASSWORD=*****
+MAIL_ENCRYPTION=null
+MAIL_ADDRESS =php28_28@163.com
+MAIL_NAME =wangxiong
+```
+```
+① 错误：Address in mailbox given [php28_28] does not comply with RFC 2822, 3.6.2.
+② 解决：发送者的邮件地址必须完整并正确
+```
+```
+$sendResult = Mail::send('emails.activation', ['email' => $this->email,
+'uid' => $this->user_id, 'email_code' => $this->emailCode], function ($message) {
+$message->to($this->email)->subject('激活邮箱');
+});
+```
+
+#### 开启sql语句打印
+```
+vendor\laravel\framework\src\Illuminate\Database\connection.php
+ protected $loggingQueries = true;
+ DB::connection()->enableQueryLog();
+ $queries = DB::getQueryLog();
+
+```

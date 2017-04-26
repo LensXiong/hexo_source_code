@@ -1,0 +1,185 @@
+---
+layout: post
+title: Mysql性能优化-1
+date: 2016-10-01 08:32:24.000000000 +09:00
+---
+摘要：
+```
+①设计角度：存储引擎的选择、字段类型的选择、范式
+②mysql自身特性：索引、查询缓存、优化配置
+③部署大负载架构体系：主从复制、读写分离、负载均衡
+```
+# 1 存储引擎选择InnoDB
+①事务安全型存储引擎。
+```
+支持事务ACID属性（原子性，一致性，隔离性，持久性）。
+支持事务4种隔离级别（读未提交，读提交，可重复读，序列化）。
+ACID属性：
+1. 原子性（Atomicity）
+原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。
+
+2. 一致性（Consistency）
+事务必须使数据库从一个一致性状态变换到另外一个一致性状态。
+
+3. 隔离性（Isolation）
+事务的隔离性是指一个事务的执行不能被其他事务干扰，即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。
+
+4. 持久性（Durability）
+持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作和数据库故障不应该对其有任何影响。
+```
+②支持外键约束、保证数据完整性。
+
+③按照主键顺序存储
+
+```
+InnoDB按照主键顺序存储，有优化的常见查询功能
+MyIsam按照插入顺序存储。
+```
+④数据与索引使用同一个表空间文件来进行存储。
+
+```
+表空间文件默认位于mysql/data/ibdata1..ibdata2..ibdata3
+MyISAM中数据与索引是分开到不同的文件进行存储的(.MYD存数据.MYI存索引)
+```
+⑤实现行级锁定,并发性处理较好。
+```
+锁定的粒度：锁定的范围。
+行级锁。仅仅锁定需要操作独立行。增加并发性。增加锁开销。
+表级锁。锁定操作行所在的整张表。降低并发性。降低锁开销。
+```
+⑥针对于并发性，Innodb实现了MVCC，多版本并发控制。
+## 2.2 字段类型的选择
+```
+能小不要大
+能定不要变
+能数值不要字符串
+性别：枚举 enum(‘男’, ‘女’);
+IP地址：int unsigned
+Timestamp 4个字节，小范围时间；
+datetime  8个字节，很大范围的时间。
+Tinyint smallint mediumint int bigint 大小。
+```
+## 2.3 范式-逆范式(逆规范化)
+```
+NF，Normal Format
+1NF, 2NF, 3NF;
+原子性，消除部分依赖，消除传递依赖
+联想：
+在分类表中，增加商品数量字段，每次维护商品时（增加，删除，修改），同时维护相应分类数量字段的值。
+```
+## 2.4 索引
+① 普通索引:index
+
+```
+利用特定的关键字，标识数据记录的位置（磁盘上的位置，盘号，柱面，扇面，磁道）。
+```
+
+② 唯一索引:unique index
+
+```
+限制索引的关键字不能重复的索引。
+
+```
+③ 主索引:primary index
+
+```
+限制索引的关键字不能重复，并且不能为NULL。（不能为NULL的唯一索引）。一个表中只允许有一个主索引。
+```
+④ 全文索引:fulltext index
+
+```
+索引的关键字，不是某个字段的值，而是字段值中有意义的词来作为关键字建立索引。
+```
+
+复合索引，如果一个索引（以上四种任何都可以），是依赖于多个字段创建的化，称之为复合索引。
+
+## 2.5 开启MySQL服务器的查询缓存
+
+MySQL服务器提供用于缓存Select语句结果的内部内存缓存系统。
+
+使用配置项：
+
+```
+vim my.cnf
+Query_cache_type=0|1 //0：关闭缓存 1：开启缓存
+Query_cache_size=102400 //设置缓存大小。单位字节
+```
+注意事项：
+
+① 基于SQL语句缓存的，保证语句完全一致。
+
+```
+#语句不同，导致不能使用缓存
+select * from table where id=1;
+select * from table WHERE id=1;
+```
+② 如果sql语句中，存在可以动态变化的数据，则不会触发缓存。
+
+```
+# 查询缓存不开启
+$r = mysql_query("SELECT username FROM user WHERE signup_date >= CURDATE()");
+
+# 开启查询缓存
+$today = date("Y-m-d");
+$r = mysql_query("SELECT username FROM user WHERE signup_date >= '$today'");
+```
+
+## 2.6 分区、分表 partition
+```
+Create table (
+字段信息，
+索引，约束，信息
+) 表选项
+Partition By分区算法[(分区选项)]
+分区算法：
+条件分区 list(列表), range（范围），取模轮循（hash，key）。
+```
+## 2.7 读写分离
+① 修改主配置文件
+
+```
+[mysqld]
+# master
+log-bin=mysql-bin # 开启二进制文件
+server-id=1 # 分配一个唯一的ID
+```
+② 配置从服务器
+
+```
+[mysqld]
+# slave
+log-bin=mysql-bin # 开启二进制文件
+server-id=2 # 分配一个唯一的ID
+```
+
+③ 主服务器上添加从服务器账号只有复制权限
+
+```
+GRANT REPLICATION SLAVE ON *.* to 'username'@'%' identified by 'password';
+```
+④ 重启主从服务器
+
+```
+/etc/init.d/mysql restart
+```
+
+⑤ 记录当前主服务器的状态
+
+```
+show master status\G
+File:mysql-bin.000007 # 日志文件与文件指针来记录的
+Position:107 # 状态位置
+```
+
+⑥从服务器开启复制
+
+```
+start slave;
+CHANGE MASTER TO MASTER_HOST='server1',
+    -> MASTER_USER='username',
+    -> MASTER_PASSWORD='password',
+    -> MASTER_LOG_FILE='mysql-bin.000007',
+    -> MASTER_LOG_POS=107;
+SHOW SLAVE STATUS\G; # 查看slave的设置是否正确
+```
+

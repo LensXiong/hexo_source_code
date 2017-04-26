@@ -1,0 +1,157 @@
+---
+layout: post
+title: HTTP协议-1
+date: 2017-02-08 08:32:24.000000000 +09:00
+---
+### 1.HTTP协议概念
+协议一般特指：在计算机软件间相互传递信息的一套标准。不同的协议，规范的对象是不同的。
+HTTP，超文本传输协议，是用于规定，浏览器在于服务器或者服务器在于浏览器间进行数据传递时，所需要遵循的语法规则。规范了浏览器请求与服务器响应时的数据格式。
+![](index_files/HTTP_u8D85_u6587_u672C_u4F20_u8F93_u534F_u8BAE.png)
+HTTP协议规范了两方面事情：
+1.请求数据格式。
+2.响应数据格式。
+
+### 2.请求数据格式
+分成三个部分：
+① 请求行  request-line
+请求数据的第一行，保存了该请求的基本信息，共三个部分：
+请求方法 请求资源地址 协议版本
+```
+
+```
+② 请求头  request-header
+也叫请求标头，请求头信息。
+用于浏览器告知服务器需要知道的请求属性。
+```
+
+```
+Host：请求的主机。基于域名的虚拟主机，就是凭借这个值，来区分应该采用哪个主机接收当前请求。
+User-Agent：请求代理信息。谁发出的该请求。
+Accept：请求代理端优先接收内容编码类型。
+Accept-Language：请求代理端优先接收的语言类型。
+Accept-Encoding: 可以接收的压缩类型。
+Connection：连接类型其中：keep-alive保持连接的含义。
+
+注:所有的请求头结束时，应该使用一个空行做标记。
+请求头以空行结束。
+
+③ 请求主体 request-content
+请求时携带的主体数据。
+只有在post方式提交表单时，post数据才是请求主体当中的内容。
+```
+
+```
+
+### 3.响应数据格式
+同样也分为三个部分：
+响应行，响应头，响应主体
+① 响应行
+响应的基本信息概要由三部分组成：
+协议版本 消息码 消息
+其中，消息码，与消息是一一对应。
+```
+
+```
+② 响应头
+服务器告知浏览器需要知道的一些属性。
+例如：
+Content-Type:     响应主体的内容类型
+Content-Length:    响应主体的长度，字节为单位
+Date：            响应的时间，GMT时间。格林威治平时。
+```
+
+```
+③ 响应主体
+响应的主体数据，浏览器查看源代码所看到的内容。
+包括PHP的所有输出，echo，var_dump,PHP模式之外的HTML代码。
+```
+
+```
+### 4.PHP模拟HTTP请求
+① 连接到目标服务器。
+② 向目标服务器发送符合HTTP请求协议的数据。
+
+```
+<?php
+// 模拟get请求
+$host = '127.0.0.1';
+$port = '80';
+if (!$link = fsockopen($host, $port)) {
+    die('连接失败');
+}
+
+//构造请求数据
+$request_data = 'GET /response.php?name=test HTTP/1.1' . "\r\n"; //请求行
+//请求头
+$request_data .= 'Host: test.kang.com' . "\r\n";//请求主机
+$request_data .= 'User-Agent: hzk/1.0' . "\r\n";//请求代理信息
+//空行结束
+$request_data .= "\r\n";
+
+//请求主体
+//get请求没有请求主体
+
+//利用连接将亲求数据写到服务器端。
+fwrite($link, $request_data);
+
+$response_data = fread($link, 8000);
+
+//处理，输出，存储
+echo $response_data;
+```
+### 5.处理操作响应
+① header操作cookie
+```
+header('Set-Cookie: someKey=someValue'); 
+```
+
+② http下载
+```
+<?php
+//利用ID获得需要下载的文件地址。
+$list = array(
+    '1' => './src.jpg',
+    '2' => './59.php',
+    '3' => '../ECShop_V2.7.3_UTF8_release1106.rar',
+    );
+
+$file = $list[$_GET['id']];
+
+//告知浏览器，将响应主体当作附件对待
+header('Content-Disposition: Attachment;filename='.basename($file));
+
+//确定响应主体的内容类型
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mime_type = finfo_file($finfo, $file);
+finfo_close($finfo);
+header('Content-Type: ' . $mime_type);
+
+readFile($file);
+```
+③ 控制浏览器缓存
+```
+header('Expires: ' . gmdate('D, d M Y H:i:s', time()-1) . ' GMT');
+//Thu, 03 Jul 2014 09:45:00 GMT
+```
+### 6.HTTP响应状态码
+基本分类：
+100-199 用于指定客户端应相应的某些动作。 
+200-299 用于表示请求成功。 
+300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
+400-499 用于指出客户端的错误。 
+500-599 用于支持服务器错误。
+```
+200 OK: 正常响应 
+301 Moved Permanently：地址永久性重定向 
+302 Temporarily Moved：地址暂时性重定向 
+304 Not Modified：客户端有缓冲的文件 
+403 Forbidden:服务器拒绝执行，权限不足 
+404 Not Found: 访问的页面不存在 
+500 Internal Server Error:服务器内部错误 
+502 Bad Gateway:网关故障 
+504 Gateway Timeout:网关超时
+```
+
+
+
+

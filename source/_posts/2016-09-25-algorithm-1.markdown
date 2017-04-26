@@ -1,0 +1,153 @@
+---
+layout: post
+title: 基础算法-1
+date: 2016-09-25 08:32:24.000000000 +09:00
+---
+
+###1、基础排序
+1.1 冒泡排序法
+```
+$arr = array(100,70,3,200,80);
+第一轮：70 3 100 80 [200]
+第二轮：3 70 80 [100]
+第三轮：3 70 [80]
+第四轮：3 [70]
+第五轮：[3]
+```
+```
+    function bubbleSort($array) {
+        for ($i = 0; $i < count($array) - 1; $i++) {
+            for ($j = 0; $j < count($array) - 1 - $i; $j++) {
+                if ($array[$j] > $array[$j + 1]) {
+                    $temp = $array[$j];
+                    $array[$j] = $array[$j + 1];
+                    $array[$j + 1] = $temp;
+                }
+            }
+        }
+    }
+
+```
+
+1.2 选择排序法
+```
+function selectSort($array) {
+        $temp = 0;
+        for ($i = 0; $i < count($array) - 1; $i++) {
+            $minVal = $array[$i];  //假设$i就是最小值
+            $minValIndex = $i;
+            for ($j = $i + 1; $j < count($array); $j++) {
+                if ($minVal > $array[$j]) {    //从小到大排列
+                    $minVal = $array[$j];     //找最小值
+                    $minValIndex = $j;
+                }
+            }
+            $temp = $array[$i];
+            $array[$i] = $array[$minValIndex];
+            $array[$minValIndex] = $temp;
+        }
+    }
+```
+
+1.3 插入排序法
+```
+function insertSort($array) {  //从小到大排列
+        //先默认$array[0]，已经有序，是有序表
+        for ($i = 1; $i < count($array); $i++) {
+            $insertVal = $array[$i]; //$insertVal是准备插入的数
+            $insertIndex = $i - 1; //有序表中准备比较的数的下标
+            while ($insertIndex >= 0 && $insertVal < $array[$insertIndex]) {
+                $array[$insertIndex + 1] = $array[$insertIndex]; //将数组往后挪
+                $insertIndex--; //将下标往前挪，准备与前一个进行比较
+            }
+            if ($insertIndex + 1 !== $i) {
+                $array[$insertIndex + 1] = $insertVal;
+            }
+        }
+    }
+```
+
+1.4 快速排序法
+```
+function quickSort($array) {
+        if (!isset($array[1]))
+            return $array;
+        $mid = $array[0]; //获取一个用于分割的关键字，一般是首个元素
+        $leftArray = array();
+        $rightArray = array();
+        foreach ($array as $v) {
+            if ($v > $mid)
+                $rightArray[] = $v;  //把比$mid大的数放到一个数组里
+            if ($v < $mid)
+                $leftArray[] = $v;   //把比$mid小的数放到另一个数组里
+        }
+        $leftArray = quickSort($leftArray); //把比较小的数组再一次进行分割
+        $leftArray[] = $mid;        //把分割的元素加到小的数组后面，不能忘了它哦
+        $rightArray = quickSort($rightArray);  //把比较大的数组再一次进行分割
+        return array_merge($leftArray, $rightArray);  //组合两个结果
+    }
+```
+
+###2、两个文件的相对路径
+```
+function getRelativePath() {
+    $a = '/a/b/c/d/e.php';
+    $b = '/a/b/12/34/F/c.php';
+    $arrA = explode('/', $a);
+    $arrB = explode('/', $b);
+    $countB = count($arrB);
+    $pathInfo = '';
+    for ($i = 1; $i <= $countB - 2; $i++) {
+        $pathInfo .= $arrA[$i] == $arrB[$i] ? '../' : $arrB[$i] . '/';
+    }
+    print_r($pathInfo);
+}
+```
+
+### 3、open_door转换成OpenDoor
+```
+<?php
+function strim($str){
+$strTemp=ucwords(str_replace('_',' ',$str));
+return str_replace(' ','_',$strTemp);
+}
+```
+
+### 4、目录树结构
+```
+<?php
+function dirlist($dir) {
+    $arr = scandir($dir);
+    foreach ($arr as $val) {
+        if ($val != '.' && $val != '..') {
+            $path = $dir . '/' . $val;
+            if (is_dir($path)) {
+                dirlist($path);
+            } else {
+                echo "<p>{$path}</p>";
+            }
+        }
+    }
+}
+```
+### 5、遍历文件夹下的所有文件和子文件夹
+```
+function my_scandir($dir) {
+    $files = array();
+    if (is_dir($dir)) {
+        if ($handle = opendir($dir)) {
+            while (($file = readdir($handle)) !== false) {
+                if ($file != "." && $file != "..") {
+                    if (is_dir($dir . "/" . $file)) {
+                        $files[$file] = my_scandir($dir . "/" . $file);
+                    } else {
+                        $files[] = $dir . "/" . $file;
+                    }
+                }
+            }
+            closedir($handle);
+            return $files;
+        }
+    }
+}
+```

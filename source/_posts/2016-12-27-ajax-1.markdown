@@ -1,0 +1,239 @@
+---
+layout: post
+title: Ajax应用-1
+date: 2016-12-27 08:32:24.000000000 +09:00
+---
+### 1、利用ajax收集表单信息
+#### ① 传统方式收集表单
+```
+//利用dom收集表单信息
+var nameV = document.getElementById('username').value;
+var emailV = document.getElementById('useremail').value;
+var info = "name="+nameV+"&email="+emailV;
+```
+#### ② 利用FormData收集全部表单域信息
+FormData使用注意：
+①.主流浏览器可以使用(IE低版本不可以使用)
+②.不要设置header头(setRequestHeader)
+```
+obj.setRequestHeader("content-type","application/x-www-form-urlencoded");//不要设置头信息
+```
+③.求各个表单域项目必须有name属性
+```
+<form method="post" action="">
+用户名：<input type="text" name="username" id="username" /><br />
+邮箱：<input type="text" name="useremail" id="useremail" /><br />
+<input type="button" value="注册" onclick="f1()" />
+</form>
+```
+利用FormData收集表单信息：
+```
+var fm = document.getElementsByTagName('form')[0];
+//var fd = new FormData([表单元素节点对象]);
+var fd = new FormData(fm);
+```
+利用FormData收集零散的表单域信息
+```
+var nameV=document.getElementsById('username').value;
+var fd =  new  FormData();
+//fd.append(名称，值); //给当前表单数据对象收集信息
+fd.append('name',nameV);
+```
+### 2、ajax实现附件上传
+#### ① 利用FormData收集全部的form表单信息
+XMLHttpRequest2+FormData实现附件上传。（FormData不仅可以收集普通表单域信息，也可以收集附件信息）
+```
+<form  action=””  method=””  enctype=”multipart/form-data”>
+move_uploaded_file(附件临时路径名，附件真实路径名);
+```
+表单：
+```
+<form >
+头像：<input type="file" name="userpic" id="userpic" />
+</form>
+```
+js函数：
+```
+//利用FormData+ajax实现附件上传
+var fm = document.getElementsByTagName('form')[0];
+var fd = new FormData(fm);//两部分信息：普通表单域+上传文件域
+```
+#### ② 利用files收集零散的文件域信息
+在javascript里边，由于有安全方面的限制，是禁止javascript语言访问客户端本地文件信息的。
+在html5里边有新的标准特性：files，该属性允许通过js代码把上传的文件域信息给抓取出来。
+```
+//利用FormData+ajax实现附件上传
+var fd = new FormData();
+//获得被上传的附件信息
+//var pic = document.getElementById('userpic').files;
+//console.log(pic);//FileList { 0=File, length=1, item=item(), 更多...}
+var pic = document.getElementById('userpic').files[0];
+//console.log(pic);File { size=146410, type="image/jpeg", name="1a.jpg", 更多...}
+//fd.append(名称，值);
+fd.append('userpic',pic);
+```
+#### ③ 立即显示被上传图片的效果
+通过img的属性src显示图片：
+a.给src设置图片的路径名
+b.把图片对应的二进制信息设置到src属性里边，同样可以显示。
+通过files获得对应上传文件信息，在该文件信息里边抓取用于显示的二进制信息。
+方法：window.URL.createObjectURL(file文件信息)
+表单内容改变事件：
+```
+头像：<input type="file" name="userpic" id="userpic" onchange="showpic()"/>
+<img src="" alt="" width="260" height="200" />
+```
+js显示图片:
+```
+function showpic(){
+//① 获得上传文件域的文件信息
+var pic = document.getElementById('userpic').files[0];
+//② 在pic的文件里边抓取该文件用于显示的二进制信息
+var s = window.URL.createObjectURL(pic);
+//③ 设置src属性，显示图片
+document.getElementsByTagName('img')[0].src=s;
+}
+
+```
+
+#### ④ 上传大附件进度条设置
+原理：通过XMLHttpRequest.upload.onprogress感知附件上传情况，该事件属性间隔50-100ms执行一次。
+a. 修改php.ini限制
+```
+post_max_size = 220M //表单数据最多220M
+upload_max_filesize = 200M //单个表单附件最大200M限制
+```
+b.实现方法
+表单：
+```
+<style type="text/css">
+#pat{width:340px; height:40px; border:2px solid blue;}
+#son{width:0; height:100%; background-color:lightblue;}
+</style>
+<h2>进度条设置</h2>
+<div id="pat"><div id="son"></div></div>
+```
+
+
+js函数：
+```
+var obj = new XMLHttpRequest();
+obj.upload.onprogress = function(evt){
+//感知附件上传情况
+var loaded = evt.loaded;//一上传大小
+var total = evt.total;//附件总大小
+//计算当前上传的百分比
+var per = Math.round((loaded/total)*100);
+//给div设置宽度百分比
+document.getElementById('son').innerHTML=per+"%";   document.getElementById('son').style.width=per+"%";
+}
+```
+
+### 3、ajax版聊天室
+显示区实现：
+显示所有人的聊天信息，通过ajax获得服务器的聊天信息，让后通过dom技术显示到页面上。由于大家随时要发表留言，因此可以使用setInterval要不间断地通过ajax获得服务器最新的聊天信息。
+发表区实现：
+发表当前用户的留言信息，为了用户体验比较好，页面不要跳转刷新，这样可以通过ajax收集表单信息，存储到服务器里边。
+#### ① 如何避免获得已经有的数据
+把已经查询出来信息的最大id值传递给服务器端
+服务器获得聊天内容的条件就是id必须大于客户端传递过来的id信息
+客户端：
+```
+var maxID = 0;
+obj.open('get','./data.php?maxID='+maxID);
+```
+服务器端：
+```
+$maxID = $_GET['maxID'];
+$sql = "select * from message where id>".$maxID;
+```
+
+#### ② 发表留言成功后提示消失
+```
+<span id="sendresult"></span>
+```
+```
+function clearshow(){
+document.getElementById('sendresult').innerHTML = '';
+}
+setTimeout('clearshow()',1000);
+```
+
+#### ③ 设置滚动条卷起的高度以显示最新内容
+设置滚动条卷起高度等于当前div高度，会自适应随之在最下边显示
+```
+<div id="show_msg"></div>
+```
+```
+var show_msg = document.getElementById('show_msg');
+//divnode.scrollTop     滚动条卷起高度
+//divnode.scrollHeight  获得div的高度(计算滚动条)
+show_msg.scrollTop = show_msg.scrollHeight;
+}
+```
+#### ④ 通过ajax获得聊天内容
+```
+        function getmsg(){
+            var obj = new XMLHttpRequest();
+            obj.onreadystatechange = function(){
+                if(obj.readyState==4 && obj.status==200){
+                    //json对象信息
+                    eval("var info="+obj.responseText);
+                    var msg = "";
+                    for(var i=0; i<info.length; i++){
+                        msg += "<p style='color:"+info[i].color+"'>";
+                        msg += info[i].sender+"&nbsp;对&nbsp;"+info[i].receiver+"&nbsp;"+info[i].biaoqing+"&nbsp;说:";
+                        msg += info[i].msg+"("+info[i].add_time+")";
+                        msg += "</p>";
+                        //把已经获得的全部记录的最大id赋值给maxID
+                        maxID = info[i].id;
+                    }
+                    var show_msg = document.getElementById('show_msg');
+                    //把msg合并好的信息追加到div里边
+                    show_msg.innerHTML += msg;             
+                    //设置滚动条卷起高度等于当前div高度，会自适应随之在最下边显示
+                    show_msg.scrollTop = show_msg.scrollHeight;
+                }
+            }
+```
+
+#### ⑤ 使用setInterval不间断的通过ajax获取聊天信息
+```
+window.onload = function(){
+setInterval("getmsg()",2000);
+}
+```
+
+### 4、利用ajax获得天气预报信息
+先根据请求ip地址($_SERVER),再根据编号获得地区天气信息
+ip地址-----(公共接口)------北京-----------编号(本地服务器获得)
+
+接口地址：www.tianqi.com/plugin
+```
+<iframe width="130" scrolling="no" height="120" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=4&color=%230070C0&bgc=%23C6C6C6&icon=4&wind=1&num=6"></iframe>
+```
+### 5、jquery封装好的ajax
+$.get():
+
+```
+$.get(url地址[,data传递参数][, fn回调函数][,  type返回信息的类型]);
+```
+
+$.post():
+
+```
+$.post(url地址[,data传递参数][, fn回调函数][,  type返回信息的类型]);
+```
+
+$.ajax(json参数):
+
+```
+json参数：
+    url:请求地址
+    data: 给服务器传递数据
+    type: get/post请求方式
+    dataType: html/text/xml/json服务器返回数据类型
+    success: function(){}成功请求后的回调函数
+    async:true/false 同步、异步请求
+    cache: true/false  是否进行缓存
+```
