@@ -2,6 +2,17 @@
 layout: post
 title: 基础算法-1
 date: 2016-09-25 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：基础排序
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 
 ###1、基础排序

@@ -2,7 +2,17 @@
 layout: post
 title: 设计模式-1
 date: 2017-01-23 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
 ---
+**
+摘要：单例模式
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ### 1、单例模式
 
 #### ①定义

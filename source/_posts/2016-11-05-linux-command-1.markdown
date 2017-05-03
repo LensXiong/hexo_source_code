@@ -2,6 +2,17 @@
 layout: post
 title: Linux命令-1
 date: 2016-11-05 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：Linux命令
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 ### 1. 查看目录下的文件信息
 ```

@@ -2,7 +2,17 @@
 layout: post
 title: Ajax应用-1
 date: 2016-12-27 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
 ---
+**
+摘要：利用ajax收集表单信息
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ### 1、利用ajax收集表单信息
 #### ① 传统方式收集表单
 ```

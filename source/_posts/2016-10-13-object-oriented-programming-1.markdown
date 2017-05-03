@@ -2,6 +2,17 @@
 layout: post
 title: 面向对象基础-1
 date: 2016-10-23 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：面向对象基础
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 ## 1、什么是面向对象？
 - [x] 面向对象的核心思想

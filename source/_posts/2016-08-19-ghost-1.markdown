@@ -2,9 +2,20 @@
 layout: post
 title: Ghost博客的搭建
 date: 2016-08-19 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：相关版本:Ubuntu14.04 Nginx1.4.6 Mysql5.6 Nodev0.10.37 Ghost0.9.0
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 
-相关版本:Ubuntu14.04 Nginx1.4.6 Mysql5.6 Nodev0.10.37 Ghost0.9.0
+
 ## 1、前期准备
 >
 ```

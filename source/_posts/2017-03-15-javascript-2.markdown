@@ -2,26 +2,19 @@
 layout: post
 title: Javascript基础-2
 date: 2017-03-15 15:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
 ---
+**
+摘要：
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 
-## <span id="0">目录</span>
->* [**DOM简介**](#1)
->* [**DOM操作**](#2)
->* [获取元素节点](#2.1)
->* [获取属性节点](#2.2)
->* [获取文本节点](#2.3)
->* [创建节点](#2.4)
->* [修改节点](#2.5)
->* [删除节点](#2.6)
->* [复制节点](#2.7)
->* [操作样式](#2.8)
->* [**事件驱动**](#3)
->* [事件设置](#3.1)
->* [事件流](#3.2)
->* [事件对象](#3.3)
->* [事件加载](#3.4)
-
-## [<span id="1">DOM简介</span>](#0)
+## [<span id="1">DOM简介
 
 DOM：document  object  model  文档对象模型
 BOM：browser   object  model  浏览器对象模型
@@ -63,11 +56,11 @@ nodeType:元素节点1   属性节点2  文本节点3  文档节点9  注释节�
 </script>
 ```
 
-## [<span id="2">DOM操作</span>](#0)
+## [<span id="2">DOM操作
 
 DOM操作：对HTML页面内部的各个节点进行“增、删、改、查”的操作。
 
-### [<span id="2.1">获得元素节点</span>](#0)
+### [<span id="2.1">获得元素节点
 ① document.getElementById(id属性值)
 通过getElementById()获得元素节点,该方法每次获得一个节点。
 ```
@@ -116,7 +109,7 @@ DOM操作：对HTML页面内部的各个节点进行“增、删、改、查”�
 </script>
 ```
 
-### [<span id="2.2">获取属性节点</span>](#0)
+# 获取属性节点
 先获得元素节点，再通过attributes获得“数组列表”的属性节点。
 元素节点.attributes：  以数组列表形式返还属性节点
 属性列表.属性名称：    获得具体属性节点
@@ -172,7 +165,7 @@ node.setAttribute(属性名称，值)
 </script>
 ```
 
-### [<span id="2.3">获取文本节点</span>](#0)
+### [<span id="2.3">获取文本节点
 ```
 <body>
     <h2>获得文本节点</h2>
@@ -185,7 +178,7 @@ node.setAttribute(属性名称，值)
 </script>
 ```
 
-### [<span id="2.4">创建节点</span>](#0)
+### [<span id="2.4">创建节点
 元素节点：createElement(tag标签名称div/p/input);
 文本节点：createTextNode(文本信息);
 属性信息：setAttribute(名称，值);
@@ -209,7 +202,7 @@ document.body.appendChild(ull);
 </script>
 ```
 
-### [<span id="2.5">修改节点</span>](#0)
+### [<span id="2.5">修改节点
 父节点.replaceChild(newnode,oldnode)
 节点替换操作，通过父节点进行替换,替换节点要发生物理位置移动。
 ```
@@ -233,7 +226,7 @@ document.body.appendChild(ull);
 </script>
 ```
 
-### [<span id="2.6">删除节点</span>](#0)
+### [<span id="2.6">删除节点
 父节点.removeChild(node)
 ```
 <body>
@@ -251,7 +244,7 @@ document.body.appendChild(ull);
 </script>
 ```
 
-### [<span id="2.7">复制节点</span>](#0)
+### [<span id="2.7">复制节点
 父节点.appendChild(node)
 
 ```
@@ -270,7 +263,7 @@ document.body.appendChild(ull);
 </script>
 ```
 
-### [<span id="2.8">操作样式</span>](#0)
+### [<span id="2.8">操作样式
 获取样式信息：node.style.样式名称
 设置样式信息：node.style.样式名称 = 值
 ```
@@ -287,14 +280,14 @@ dv.style.width='500px';                // 设置宽度
 </script>
 ```
 
-## [<span id="3">事件驱动</span>](#0)
+## [<span id="3">事件驱动
 定义：对鼠标或键盘所做的动作就事件，对事件的处理称为事件驱动，事件驱动一般都由函数担任。
 例如：onclick  onmouseover  onmouseout  onfocus  onblur  onsubmit等。
 
-### [<span id="3.1">事件设置</span>](#0)
-### [<span id="3.2">事件流</span>](#0)
-### [<span id="3.3">事件对象</span>](#0)
-### [<span id="3.4">事件加载</span>](#0)
+### [<span id="3.1">事件设置
+### [<span id="3.2">事件流
+### [<span id="3.3">事件对象
+### [<span id="3.4">事件加载
 
 
 

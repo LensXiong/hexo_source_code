@@ -2,6 +2,17 @@
 layout: post
 title: Laravel框架基础-1
 date: 2016-11-21 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：laravel基础
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 
 ## 1、laravel 概述

@@ -2,6 +2,17 @@
 layout: post
 title: Mysql性能优化-1
 date: 2016-10-01 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
+---
+**
+摘要：Mysql性能优化 ①设计角度：存储引擎的选择、字段类型的选择、范式 ②mysql自身特性：索引、查询缓存、优化配置 ③部署大负载架构体系：主从复制、读写分离、负载均衡
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 摘要：
 ```

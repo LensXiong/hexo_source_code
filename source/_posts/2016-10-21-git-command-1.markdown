@@ -2,7 +2,17 @@
 layout: post
 title: Git命令-1
 date: 2016-10-21 08:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
 ---
+**
+摘要：Git命令
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 ---
 ##1 Git SSH Key 生成步骤
 ```

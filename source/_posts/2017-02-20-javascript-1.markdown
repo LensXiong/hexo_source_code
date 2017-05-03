@@ -2,45 +2,40 @@
 layout: post
 title: Javascript基础-1
 date: 2017-02-20 10:32:24.000000000 +09:00
+categories:
+- 技术
+tags:
+- JavaScript
+toc: true
 ---
-### <span id="0">目录</span>
->* [js简介](#1)
->* [语法规则](#2)
->* [数据类型](#3)
->* [数值类型](#4)
->* [浮点类型](#5)
->* [运算符](#6)
->* [流程控制](#7)
->* [函数](#8)
->* [数组](#9)
->* [字符串](#10)
->* [eval方法](#11)
+**
+摘要：
+**
+<!-- more -->
+<The rest of contents | 余下全文>
 
-
-###  一、 [<span id="1">js简介</span>](#0)
+# js简介
 定义：基于对象和事件驱动并具有安全性能的脚本语言。
 
 
-###  二、[<span id="2">语法规则</span>](#0)
-
-
-####  1.引入js语言
+# 语法规则
+## 引入js语言
 ```
 <script type=”text/javascript”>具体js代码</script>
 <script type=”text/javascript” src=”js文件”></script>
 ```
-#### 2.大小写
+## 大小写
 大小写敏感
 true/false   布尔值
 TRUE/FALSE  不是
-#### 3.结束标志
+## 结束标志
     在js里边每条简单语言可以使用”;”分号结束,此分号也可以不使用(推荐使用)。
-#### 4.注释
+## 注释
 ```
 // 注释单行
 /* 注释多行 */
 ```
-#### 5.变量
+## 变量
 命名规则
 组成：字母、数字、下划线、$、汉字,开始的第一个字母不能是数字
 $符号：在php里边是变量名字的第一个字母，在jquery里边是一个关键字，因此在一般的javascript代码里边不推荐使用该信息作为名字组成部分。
@@ -48,10 +43,10 @@ $符号：在php里边是变量名字的第一个字母，在jquery里边是一�
 var  $ = “hello”; // 正确
 var get_info =”abc”;
 ```
-###  三、[<span id="3">数据类型</span>](#0)
-#### 1.php数据类型
+#  数据类型
+## php数据类型
 int、float、string、boolean、array、object、resource、null
-#### 2.js数据类型：
+## js数据类型：
 number:数值类型，包括int和float
 string：字符串类型
 boolean：布尔类型true/false
@@ -61,10 +56,10 @@ object：对象类型
 在ECMAscript里边把数组归结为对象类型，是对象内部的一个组成部分。
 
 
-### 四、[<span id="4">数值类型</span>](#0)
+#数值类型
 
 
-#### 1.进制表示
+## 进制表示
 
 
 ```
@@ -86,7 +81,7 @@ console.log(0x24); //2*16+4=36
 console.log(0xC4); //12*16+4 = 196
 </script>
 ```
-#### 2.最大和最小数
+## 最大和最小数
 
 
 最大数：Number.MAX_VALUE;
@@ -111,7 +106,7 @@ console.log(3.1415e+7);//31415000
 
 
 ```
-#### 3.typeof关键字
+## typeof关键字
 
 
 ```
@@ -127,7 +122,7 @@ console.log(typeof document);  //对象object
 ```
 
 
-### 五、[<span id="5">浮点类型</span>](#0)
+# 浮点类型
 
 
 ```
@@ -146,8 +141,8 @@ console.log((0.1e+4+0.2e+4)/(10*10*10*10));//0.3
 ```
 
 
-### 六、[<span id="6">运算符</span>](#0)
-#### 1. 算术运算符
+# 运算符
+## 算术运算符
 ```
    +  -   *   /   %  ++   --
 ```
@@ -172,7 +167,7 @@ console.log(newscore+"==="+score); //91===91
 ```
 
 
-#### 2.比较运算符
+## 比较运算符
 ```
 >  <  ==   >=  <=  !=
 ===三等号： 全等于，比较值大小和类型
@@ -181,7 +176,7 @@ console.log(newscore+"==="+score); //91===91
 !==: 不全等于
 102!== ’102’  true
 ```
-#### 3.逻辑运算符
+## 逻辑运算符
 
 
 ```
@@ -237,8 +232,8 @@ console.log(!age);  //false
 console.log(!0);   //true
 </script>
 ```
-### 七、[<span id="7">流程控制</span>](#0)
-#### switch分支选择
+# 流程控制
+## switch分支选择
 变量值：常量(字符串信息、数字信息)、变量
 ```
 switch(条件变量){
@@ -270,7 +265,7 @@ switch(true){
 }
 </script>
 ```
-#### continue和break关键字
+## continue和break关键字
 continue: 跳出本次循环，进入下次循环。
 break：跳出本层循环
 ```
@@ -292,10 +287,10 @@ for(var i=0; i<5; i++){
 ```
 
 
-### 八、[<span id="8">函数</span>](#0)
+# 函数
 
 
-#### 1、函数封装
+## 函数封装
 ① 普通方式声明：
 ```
 function 函数名称(){}
@@ -325,8 +320,7 @@ getInfo();
 </script>
 ```
 
-
-####  2、函数参数
+## 函数参数
 ①在javascript里边函数的形式参数与实际参数没有严格的对应关系。
 ```
 <script type="text/javascript">
@@ -365,7 +359,7 @@ f1('linken','guangzhou',26);
 ```
 
 
-#### 3、函数返回值
+## 函数返回值
 return可以结束当前函数的执行。
 在javascript里边可以return返回一个函数给接收者使用。(函数本身就是一个对象，可以用于返回return使用)
 ```
@@ -391,7 +385,7 @@ ff();  //hello world
 ```
 
 
-####  4、函数调用
+## 函数调用
 ① 传统方式调用：函数名();
 ```
 <script type="text/javascript">
@@ -413,7 +407,7 @@ f1(); //hello
 
 
 ```
-#### 5、callee关键字
+## callee关键字
 callee：代表当前函数的引用，该关键字可以减低代码的耦合度
 ```
 <script type="text/javascript">
@@ -432,7 +426,7 @@ function jiecheng(n){
 }
 </script>
 ```
-#### 6、caller关键字
+## caller关键字
 caller： 代表调用该函数的函数
 ```
 <script type="text/javascript">
@@ -455,7 +449,7 @@ function dog(){
 ```
 
 
-#### 7、局部变量和全局变量
+## 局部变量和全局变量
 全局变量：
 在php里边，在函数外边声明的就是全局变量。
 在javascript里边，变量的直接调用对象是window，这个变量就是全局变量。
@@ -493,12 +487,12 @@ f1();
 ```
 
 
-### 九、[<span id="9">数组</span>](#0)
+# 数组
 定义：把许多名称和数据类型都一样的变量集合起来就是数组。
 作用：使用单独的变量名来存储一系列的值。
 
 
-#### 1、数组声明
+## 数组声明
 
 
 方式一：
@@ -537,7 +531,7 @@ console.log(color[0]);      //undefined
 
 
 
-#### 2、数组长度
+## 数组长度
 
 
 数组.length：获得数组最大下标加1的信息值。
@@ -554,7 +548,7 @@ console.log(fruit.length); //11
 ```
 
 
-#### 3、数组遍历
+## 数组遍历
 方式一：for遍历数组，条件是数组下标是0,1,2,3...规则的。
 ```
 <script type="text/javascript">
@@ -600,7 +594,7 @@ for(var k in student){
 ```
 
 
-#### 4、数组方法
+## 数组方法
 instanceof方法：判断一个对象是否是指定类给实例化出来的
 ```
 <script type="text/javascript">
@@ -632,7 +626,7 @@ console.log(fruit); // fruit = ['apple','pear'];
 ```
 
 
-### 十、[<span id="10">字符串</span>](#0)
+# 字符串
 字符串声明：字符串声明和对象声明的区别，对象可以给自己声明属性,而字符串不可以声明属性。
 ```
 <script type="text/javascript">
@@ -656,7 +650,7 @@ console.log(addr.length); //7
 ```
 
 
-### 十一、[<span id="11">eval()方法</span>](#0)
+# eval()方法
 
 
 eval()：把参数字符串信息当作表达式在上下文环境中运行。

@@ -74,9 +74,9 @@ youyan:
 ## "on: false": 自定义显示图片设置background_image: 5
 background:
   #on: true
-  on: false
-  background_sum: 7
-  background_image: 80
+  on: true
+  background_sum: 6
+  background_image: 100
 
 highlight_style:
   on: true
@@ -97,11 +97,11 @@ left_col_width: 300
 
 # 目录中标题不换行
 # Keep TOC title on the same line | 
-toc_nowrap: false
+toc_nowrap: true
 
 # 自定义"阅读全文"链接按钮的显示文字
 # Customize the text on excerpt link
-excerpt_link: 大航海 #修改more>>的文字
+excerpt_link: 阅读更多 #修改more>>的文字
 
 # 是否显示边栏中的搜索框（仅样式，未添加搜索功能）
 # Search Box in left column
@@ -121,7 +121,8 @@ tagcloud: true
 # Blogroll, Link exchange | 友情链接
 # friends: false
 friends:
-  name: http://wwxiong.com/
+  王雄: http://wwxiong.com/
+  jellybool: https://jellybool.com/
 
 # 打赏
 # 请在需要打赏的文章的md文件头部，设置属性reward: true
@@ -137,12 +138,12 @@ alipay: /img/alipay.png
 weixin: /img/weixin.png
 
 #是否开启“关于我”。
-aboutme: 纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+aboutme: 我深信，所有的非常，都源于不懈的日常。
 #aboutme: false
 
 # 是否在新窗口打开链接
 # Open ALL link in a new tab
-open_in_new: true
+open_in_new: false
 
 # Customize feed link 自定义订阅地址
 rss: /atom.xml
