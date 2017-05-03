@@ -208,13 +208,16 @@ sidebar:
 
 
 # Blog rolls
-links_title: Links
+links_title: 友情链接
 links_layout: block
 #links_layout: inline
 links:
-  Wangxiong: http://wwxiong.com
   阿里中间件团队: http://jm.taobao.org
   罗磊的独立博客: https://luolei.org
+  王雄的技术博客: http://wwxiong.com
+  小韦的运维博客: https://carey.akhack.com
+  黑客与画家的社区： https://hacpai.com
+  丁亮的个人博客：http://88250.b3log.org
 
 
 # ---------------------------------------------------------------
@@ -301,7 +304,7 @@ mathjax:
 han: false
 
 # Swiftype Search API Key
-#swiftype_key:
+# swiftype_key: bv5JspqkyMhuDjEdXAvt
 
 # Baidu Analytics ID
 #baidu_analytics:
@@ -461,7 +464,7 @@ calendar:
 
 # Algolia Search
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 10
   labels:

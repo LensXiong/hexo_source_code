@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://wangxiong.me/hexo_blog/
+url: http://wwxiong.com/hexo_blog/
 root: /hexo_blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: wx
 
 # 主页设置
 index_generator:
@@ -84,3 +84,11 @@ deploy:
   type: git
   repository: git@github.com:LensXiong/hexo_blog.git
   branch: master
+
+# Algolia
+algolia:
+  applicationID: PTDAI8CAYI
+  apiKey: 0ee8d8726142fd3ffede4bc9f6a038b4
+  adminApiKey: e589b68ea0d92ac3f386e0aaeed926b9
+  indexName: lensxiong
+  chunkSize: 5000
