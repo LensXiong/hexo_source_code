@@ -3,14 +3,10 @@
 # Header | 主菜单
 ## About Page: `hexo new page about`
 ## Tags Cloud Page: `hexo new page tags`
-menu:
-  博客: /
-  项目: https://github.com/LensXiong
-  关于: /hexo_blog
-  导航: /FrontEndGuide
-# 静心阅读: /tags
-# 光影之路: /instagram
-# 随笔: /tags/随笔
+##　menu:
+  # 主页: http://wwxiong.com
+  # 项目: https://github.com/LensXiong
+  # 首页: http://wwxiong.com
 
 # Link to your avatar | 填写头像地址
 avatar: img/head.jpg
@@ -23,12 +19,12 @@ favicon: img/favicon.png
 ## Encrypt email 加密邮件地址 http://ctrlq.org/encode/
 ## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
 ## https://github.com/hexojs/hexo-generator-feed
-subnav:
-  mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=4ZaZz5aAj4aZiI6PhqGHjpmMgIiNz4KOjA"
-  github: "https://github.com/LensXiong"
-  weibo: "http://weibo.com/"
-  google: "https://plus.google.com/110287885508431241314"
-  twitter: "https://twitter.com/Outlier"
+# subnav:
+  # mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=4ZaZz5aAj4aZiI6PhqGHjpmMgIiNz4KOjA"
+  # github: "https://github.com/LensXiong"
+  # weibo: "http://weibo.com/"
+  # google: "https://plus.google.com/110287885508431241314"
+  # twitter: "https://twitter.com/Outlier"
   # facebook: "#"
   # rss: /atom.xml
   # pinterest: "#"
@@ -52,7 +48,7 @@ disqus:
   # you have set "disqus_shortname" in your site's "_config.yml" 
 
 duoshuo: 
-  on: true
+  on: false
   domain: 
   # 是否开启多说评论，http://duoshuo.com/create-site/
   # 使用上面网址登陆你的多说，然后创建站点，在 domain 中填入你设定的域名前半部分
@@ -74,7 +70,7 @@ youyan:
 ## "on: false": 自定义显示图片设置background_image: 5
 background:
   #on: true
-  on: true
+  on: false
   background_sum: 6
   background_image: 100
 
@@ -85,7 +81,7 @@ highlight_style:
   # Set inline_code to style highlight text
   # Chose a highlight theme for code block
   # 通过 inline_code 切换内置文本高亮样式 Value: 0 - 9 可选
-  # 通过 code_block 切换内置代码高亮配色主题  Value: 0 - 4 
+  # 通过 code_block 切换内置代码高亮配色主题  Value: 0 - 4
 
 blockquote_style:
   #on: true
@@ -109,7 +105,7 @@ excerpt_link: 阅读更多 #修改more>>的文字
 
 # 是否开启主页及加载头像时的动画效果
 # Animation in Homepage and Loading avatar
-animate: true
+animate: false
 
 
 # >>> Small features | 小功能设置 <<<
@@ -118,27 +114,28 @@ animate: true
 # Birdhouse button in left column
 tagcloud: true
 
-# Blogroll, Link exchange | 友情链接
+# Blogroll, Link exchange | 菜单
 # friends: false
 friends:
-  王雄: http://wwxiong.com/
-  jellybool: https://jellybool.com/
+  主页: http://wwxiong.com/
+  项目: https://github.com/LensXiong
+  导航: http://wwxiong.com/hexo_blog
 
 # 打赏
 # 请在需要打赏的文章的md文件头部，设置属性reward: true
 
 # 打赏基础设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
-reward_type: 2
+reward_type: 0
 # 打赏wording
 reward_wording1: '纯属好玩'
 reward_wording2: '扫码打赏，你说多少就多少'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/img/alipay.jpg
-alipay: /img/alipay.png
+alipay: /img/alipayimg.jpg
 # 微信二维码图片地址
-weixin: /img/weixin.png
+weixin: /img/wechatimg.jpg
 
 #是否开启“关于我”。
-aboutme: 我深信，所有的非常，都源于不懈的日常。
+aboutme: 我在口袋里经常放两张纸条，一张写着我只是一颗尘埃，另一张写着世界为我而造。
 #aboutme: false
 
 # 是否在新窗口打开链接
@@ -177,7 +174,7 @@ baidu_analytics:
 # http://ibruce.info/2015/04/04/busuanzi/
 visit_counter:
   on: true
-  site_visit: 海贼到访数
+  site_visit: 网站到访数
   page_visit: 本页阅读量
 
 # A标签提示

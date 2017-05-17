@@ -2,10 +2,12 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+                  &copy; 2016-<%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+                  <section class="footer__copyright" align="center">Powered <a href="http://hexo.io/">Hexo</a>Theme <a href="https://github.com/luuman/hexo-theme-spfk" >Luuman</a></section>
+                  <section class="footer__copyright" align="center"><a href="http://icp.alexa.cn/">京ICP备16010164号-1</a></section>
             </div>
         </div>
         <% if (theme.visit_counter.on) { %>
