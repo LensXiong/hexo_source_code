@@ -1,64 +1,163 @@
 ---
 layout: post
-title: Redis基础-1
+title: Redis 学习笔记 (上)
 date: 2016-12-09 08:32:24.000000000 +09:00
 categories:
 - 技术
 tags:
-- JavaScript
+- Redis
 toc: true
 ---
-**
-摘要：Redis基础
-**
+摘要：Redis (Remote Dictionary Server) 是一个开源的、基于内存的数据结构存储器，可以被用作数据库、缓存和消息代理。如果你是一名NoSQL的拥护者，你一定会提倡运用非关系型的数据存储，相对于铺天盖地的关系型数据库运用，无疑是一种全新思维的注入。所以，你完全可以将Redis融入到你的系统中，它能帮你解决很多问题，比如那些你现有的数据库处理起来感到缓慢的任务，你可以通过Redis来进行优化，或者为应用创建些新的功能。在本文中，先从认识Redis开始，一步步编译和安装，再对基本的五种数据类型进行操作，了解Redis的持久化功能和主从配置，最终能使用PHP脚本语言操作Redis。
 <!-- more -->
 <The rest of contents | 余下全文>
----
 
-## 1、关于Redis
-① Redis是一个开源的、基于内存的数据结构存储器，可以被用作数据库、缓存和消息代理。相较Memcached而言，支持更加丰富的数据结构，包括字符串、哈希、列表、集合、有序集合等，此外还支持将数据持久化到数据库。
-② mysql数据库的数据是以文件形式保存在硬盘里边.Redis也是数据库服务器(但是其不可以保存复杂的信息，其特点是数据较简单，但是速度快)软件，数据是在内存里边保存。
-## 2、为什么要使用Redis
-有的时候一个网站页面的数据在相对一段时间(半天、一天)不发生变化，同时该页面每天还要被许多人访问，这样我们就把该页面需要从mysql里边获得数据放到内存里边，这样既节省mysql数据库资源、间接还节省服务器资源，同时还会使得网站访问速度加快，提升用户体验。
-```
+# 关于Redis
+Redis是一个开源的、基于内存的数据结构存储器，可以被用作数据库、缓存和消息代理。
+
+相较Memcached而言，支持更加丰富的数据结构，包括字符串、哈希、列表、集合、有序集合等，此外还支持将数据持久化到数据库。
+
+MySQL数据库的数据是以文件形式保存在硬盘里边。
+
+Redis也是数据库服务器(但是其不可以保存复杂的信息，其特点是数据较简单，但是速度快)软件，数据是在内存里边保存。
+
+# 为什么要使用Redis
+有的时候一个网站页面的数据在相对一段时间(半天、一天)不发生变化，同时该页面每天还要被许多人访问。
+
+我们把该页面从MySQL里边获得数据放到内存里边，这样既节省MySQL数据库资源、间接还节省服务器资源，同时还会使得网站访问速度加快，提升用户体验。
+
+以下是使用Redis的原因：
+
 ① 是一款数据库产品，有数据存储功能
 ② 高速读取数据(in-memory)
 ③ 减轻数据库负担，大量节省数据库资源
 ④ 有集合计算功能(优于普通数据库和同类别产品)
 ⑤ 多种数据结构支持
-```
-## 3、什么是Redis
+
+# 什么是Redis
 Remote  dictionary  server  (远程数据字典服务)
-该软件时意大利人(Antirez)开发的，使用C语言开发的一款内存高速数据库服务软件
-该软件内部有各种非常使用的数据类型：string    set(集合)   sort set(排序集合)   list(列表)   hash(哈希)
+
+该软件时意大利人(Antirez)开发的，使用C语言开发的一款内存高速数据库服务软件。
+
+该软件内部有各种非常使用的数据类型：string    set(集合)   sort set(排序集合)   list(列表)   hash(哈希) bitmaps(位图)  hyperloglogs(基数统计)
+
 该软件有本地持久化功能，可以把随时的变化的数据都在硬盘备份一份。防止数据丢失
-## 4、同类型产品memcache
+# 同类型产品Memcache
 memory cache  内存缓存
-redis与memcache比较：
-① Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+
+Redis与Memcache比较：
+
+① Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash，bitmaps， hyperloglogs 等数据结构的存储。
 ② Redis支持数据的备份，即master-slave(主—从)模式的数据备份。
 ③ Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。
-④ Redis单个value的最大限制是1GB， memcached只能保存1MB的数据
+④ Redis单个value的最大限制是1GB， Memcached只能保存1MB的数据
 
-## 5、什么场合使用Redis
+# 什么场合使用Redis
+
 ① [Sort Set]排行榜应用，取top n操作，例如sina微博热门话题
 ② [List]获得最新N个数据 或 某个分类的最新数据
-计数器应用
 ③ [Set]sns(social network site)获得共同好友
 ④ [Set]防攻击系统(ip判断)等等
 ⑤ Pub/Sub构建实时消息系统，比如很多用Pub/Sub构建的实时聊天系统的例子
-## 6、编译和安装redis
+
+# 编译和安装Redis
+
+进入下载目录
 ```
-make 或 make CFLAGS="-march=i686"
-cd src
-mkdir /usr/local/redis
-cp redis-cli redis-server ../redis.conf /usr/local/redis
-cd /usr/local/redis
-./redis-server redis.conf
-./redis-cli
+cd /usr/local
 ```
 
-## 7、编译安装PHPRedis
+下载redis
+```
+wget http://download.redis.io/releases/redis-3.0.5.tar.gz
+```
+解压缩
+```
+tar -zxvf redis-3.0.5.tar.gz
+```
+进入安装目录
+```
+cd redis-3.0.5/src
+```
+查看cpu型号
+```
+uname -m
+```
+
+编译安装
+```
+make CFLAGS=”-march=i686”;
+```
+
+> 说明：make 后面一串代码: CFLAGS=”-march=i686” 是防止软件版本与Linux硬件不适配的。Linux有i386和i686这种区别；在redis软件与硬件不适配的情况下直接使用make命令编译，会报错误。
+
+创建一个工作目录
+```
+mkdir /usr/local/redis
+```
+
+将编译安装后的三个文件复制到工作目录下
+```
+cp redis-cli redis-server ../redis.conf /usr/local/redis
+```
+
+最终结果是，redis目录下有了三个文件
+```
+redis-cli     // 客户端指令文件
+redis-server  // 服务指令文件
+redis.conf    // 配置文件
+```
+
+修改配置文件redis.conf，配置redis作为守护进程运行
+```
+vim redis.conf
+daemonize yes
+```
+> 默认情况下redis不是作为守护进程运行的，如果想让它在后台运行，需要把配置文件里daemonize改成 yes。
+
+启动redis服务
+```
+./redis-server &
+```
+如果修改过配置文件后
+```
+ ./redis-server redis.conf
+```
+杀掉rdis进程，然后再次打开redis服务
+```
+killall redis-server
+./redis-server redis.conf
+```
+查看进程里面有没有redis服务，可以用pstree命令查看进程:
+```
+pstree
+```
+查看对应的服务进程
+```
+ps -A | grep redis
+```
+
+检测客户端检测连接是否正常
+```
+./redis-cli
+```
+# src目录下相关文件
+```
+// 压力测试
+redis-benchmark
+// 检查redis持久化命令文件的完整性
+redis-check-aof
+// 检查redis持久化数据文件的完整性
+redis-check-dump
+// redis在linux上的客户端
+redis-cli
+// 做集群用的
+redis-sentinel
+// linux上的服务端
+redis-server
+```
+
+# 编译安装PHPRedis
 ```
 解压 phpredis.tar.gz
 在解压目录执行 /usr/local/php/bin/phpize
@@ -68,43 +167,40 @@ cd /usr/local/redis
 make && make install
 在php.ini配置文件中引入redis
 ```
-## 8、src目录下相关文件
+
+# keys键的操作
 ```
-redis-benchmark   	压力测试
-redis-check-aof   	检查redis持久化命令文件的完整性
-redis-check-dump   检查redis持久化数据文件的完整性
-redis-cli    		redis在linux上的客户端
-redis-sentinel   		做集群用的
-redis-server     	linux上的服务端
+// 获取所有的key
+keys *
+// 测试指定的key是否存在
+exists key
+// 删除给定的key
+del key1 key2 key3 ....keyN
+// 返回给定key的value类型
+type key
+// 返回匹配指定模式的所有key
+keys pattern
+// 返回从当前数据库中随机选取的一个key
+randomkey
+// 改名字
+rename oldkey newkey
+// 返回当前数据库的key数量
+dbsize
+// 为key指定过期时间
+expire key seconds
+// 返回key的剩余过期秒数
+tt1 key
+// 选择数据库
+select db-index
+// 将key从当前数据库移动到指定数据库
+move key db-index
+// 删除当前数据库中所有key
+flushdb
+// 删除所有数据库中的所有key
+flushall
 ```
-## 9、后台启动服务配置
-```
-17 daemonize yes 修改配置文件:redis.conf
-./redis-server redis.conf 以修改后的配置文件启动redis
-ps -A | grep redis 查看对应的服务进程
-set  goods:103:id      103
-set  goods:103:name   apple
-set  goods:103:price   3000  设置键值
-get name 获取键name的值
-keys * 获取所有的key
-```
-## 10、keys键的操作
-```
-exists key 测试指定的key是否存在
-del key1 key2 key3 ....keyN 删除给定的key
-type key 返回给定key的value类型
-keys pattern 返回匹配指定模式的所有key
-randomkey 返回从当前数据库中随机选取的一个key
-rename oldkey newkey 改名字
-dbsize 返回当前数据库的key数量
-expire key seconds 为key指定过期时间
-tt1 key 返回key的剩余过期秒数
-select db-index 选择数据库
-move key db-index 将key从当前数据库移动到指定数据库
-flushdb 删除当前数据库中所有key
-flushall 删除所有数据库中的所有key
-```
-## 11、string类型操作
+
+# string类型操作
 * string是redis最基本的类型，而且string类型是二进制安全的。
 * redis的string可以包含任何数据。包括jpg图片或者序列化的对象。
 * 单个value值最大上限是1G字节。
@@ -122,7 +218,7 @@ append key value  给指定key的字符串追加value
 substr key start end 返回截取过的key的字符串值
 ```
 
-## 12、list数据类型
+# list数据类型
 * list类型其实就是一个双向链表。通过push,pop操作从链表的头部或者尾部添加删除元素。
 * 这使得list既可以用作栈，也可以用作队列。
 ```
@@ -136,7 +232,7 @@ lrem key count value 从key对应list中删除count个和value相同的元素，
 lpop key 从list的头部删除元素，并返回删除元素
 rpop key 从list的尾部删除元素，并返回删除元素
 ```
-## 13、sort set排序数据类型
+# sort set排序数据类型
 * redis的set是string类型的无序集合。
 * set元素最大可以包含(2的32次方-1)个元素。
 * 关于set集合类型除了基本的添加删除操作，其他有用的操作还包含集合的取并集(union)，交集(intersection)，差集(difference)。通过这些操作可以很容易的实现sns中的好友推荐功能。
@@ -155,7 +251,7 @@ zscore key elemenr 返回给定元素对应的score
 zremrangebyrank key min max 删除集合中排名在给定区间的元素
 zremrangebyscore key min max 删除集合中score在给定区间的元素
 ```
-## 14、hash数据类型
+# hash数据类型
 * hash数据类型存储的数据与mysql数据库中存储的一条记录极为相似。
 
 ```
@@ -171,7 +267,7 @@ hkeys key 返回hash的所有field
 hvals key 返回hash的所有value
 hgetall key 返回hash的所有field和value
 ```
-## 15、redis持久化
+# redis持久化
 * redis较比其他同类型产品有个最大的好处可以进行持久化操作。
 * 其会根据不同条件的触发，随时把当前内存存储的数据以文件形式保存在硬盘里边，这样服务器断电、或重启系统服务器，数据还会从硬盘里边恢复到内存里。
 
@@ -212,7 +308,7 @@ bgrewriteaof  当日志文件过长时优化日志文件存储
 ./redis-cli -h 127.0.0.1 -p 6379 bgsave   手动发起快照
 ```
 
-## 16、redis的主从配置
+# redis的主从配置
 * mysql有读写分离技术，有的mysql专门做数据写入(添加、update、删除)操作，有的mysql专门做数据读取操作。
 * 服务器如果负载较高，也需要做主从(分离)配置
 有的服务器安装apache+php
@@ -244,7 +340,7 @@ slaveof 192.168.1.100 6379
 masterauth 123456 #从服务器连接密码
 ```
 
-## 17、php操作redis
+# php操作redis
 创建redis扩展文件：
 ① 下载phpredis扩展包
 上传至linux指定目录（/home/wangxiong/rdtar）

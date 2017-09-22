@@ -119,7 +119,7 @@ tagcloud: true
 friends:
   主页: http://wwxiong.com/
   项目: https://github.com/LensXiong
-  导航: http://wwxiong.com/hexo_blog
+  导航: http://wwxiong.com/navigation/index.html
 
 # 打赏
 # 请在需要打赏的文章的md文件头部，设置属性reward: true
@@ -135,7 +135,7 @@ alipay: /img/alipayimg.jpg
 weixin: /img/wechatimg.jpg
 
 #是否开启“关于我”。
-aboutme: 我在口袋里经常放两张纸条，一张写着我只是一颗尘埃，另一张写着世界为我而造。
+aboutme: 不积跬步，无以至千里。
 #aboutme: false
 
 # 是否在新窗口打开链接
