@@ -201,71 +201,123 @@ flushall
 ```
 
 # string类型操作
-* string是redis最基本的类型，而且string类型是二进制安全的。
-* redis的string可以包含任何数据。包括jpg图片或者序列化的对象。
-* 单个value值最大上限是1G字节。
-* 如果只用string类型，redis就可以被看作加上持久化特性的memcached
+string是redis最基本的类型，而且string类型是二进制安全的。
+
+redis的string可以包含任何数据。包括jpg图片或者序列化的对象。
+
+单个value值最大上限是1G字节。
+
+如果只用string类型，redis就可以被看作加上持久化特性的memcached。
 
 ```
-set key value  设置key对应的值为 string 类型的value
-mset key1 value1 ... keyN valueN  一次设置多个key的值
-mget key1 key2 ... keyN  一次获取多个key的值
-incr key  对key的值做加加操作，并返回新的值
-decr key  减减操作
-incrby key integer 加指定值
-decrby key integer 减指定值
-append key value  给指定key的字符串追加value
-substr key start end 返回截取过的key的字符串值
+// 设置key对应的值为 string 类型的value
+set key value
+// 一次设置多个key的值
+mset key1 value1 ... keyN valueN
+// 一次获取多个key的值
+mget key1 key2 ... keyN
+// 对key的值做加加操作，并返回新的值
+incr key
+// 减减操作
+decr key
+// 加指定值
+incrby key integer
+// 减指定值
+decrby key integer
+// 给指定key的字符串追加value
+append key value
+// 返回截取过的key的字符串值
+substr key start end
 ```
 
 # list数据类型
-* list类型其实就是一个双向链表。通过push,pop操作从链表的头部或者尾部添加删除元素。
-* 这使得list既可以用作栈，也可以用作队列。
+list类型其实就是一个双向链表。
+
+通过push,pop操作从链表的头部或者尾部添加删除元素。
+
+这使得list既可以用作栈，也可以用作队列。
 ```
-lpush key string 在key对应list的头部添加字符串元素
-rpush key string 在尾部添加字符串元素
-llen key 返回key对应list的长度，key不存在返回0
-lrange key start end  返回指定区间内的元素 下标从0开始
-ltrim key start end  截取list，保留指定区间内元素
-lset key index value 设置list中指定下标的元素值
-lrem key count value 从key对应list中删除count个和value相同的元素，count为0的时候删除全部
-lpop key 从list的头部删除元素，并返回删除元素
-rpop key 从list的尾部删除元素，并返回删除元素
+// 在key对应list的头部添加字符串元素
+lpush key string
+//  在尾部添加字符串元素
+rpush key string
+// 返回key对应list的长度，key不存在返回0
+llen key
+// 返回指定区间内的元素 下标从0开始
+lrange key start end
+// 截取list，保留指定区间内元素
+ltrim key start end
+// 设置list中指定下标的元素值
+lset key index value
+// 从key对应list中删除count个和value相同的元素，count为0的时候删除全部
+lrem key count value
+// 从list的头部删除元素，并返回删除元素
+lpop key
+// 从list的尾部删除元素，并返回删除元素
+rpop key
 ```
 # sort set排序数据类型
-* redis的set是string类型的无序集合。
-* set元素最大可以包含(2的32次方-1)个元素。
-* 关于set集合类型除了基本的添加删除操作，其他有用的操作还包含集合的取并集(union)，交集(intersection)，差集(difference)。通过这些操作可以很容易的实现sns中的好友推荐功能。
+redis的set是string类型的无序集合。
+
+set元素最大可以包含(2的32次方-1)个元素。
+
+关于set集合类型除了基本的添加删除操作，其他有用的操作还包含集合的取并集(union)，交集(intersection)，差集(difference)。
+
+通过这些操作可以很容易的实现sns中的好友推荐功能。
 ```
-zadd key score member 添加元素到集合，元素在集合中存在则更新对应score
-zrem key member 删除指定元素 1表示成功 0表示元素不存在
-zincrby key incr member 按照incr幅度增加对应member的score值
-zrank key member  返回指定元素在集合中的排名（下标）
-zrevrank key start end  集合中的元素按score从大到小排序
-zrange key start end  类似lrange操作从集合中去除指定区间的元素 正序 从小到大
-zrevrange key start end  返回的结果按score逆序的 从大到小
-zrangebyscore key min max  返回集合中的score在给定区间的元素
-zcount key min max  返回集合中score在给定区间的数量
-zcard key  返回集合中元素的个数
-zscore key elemenr 返回给定元素对应的score
-zremrangebyrank key min max 删除集合中排名在给定区间的元素
-zremrangebyscore key min max 删除集合中score在给定区间的元素
+// 添加元素到集合，元素在集合中存在则更新对应score
+zadd key score member
+// 删除指定元素 1表示成功 0表示元素不存在
+zrem key member
+// 按照incr幅度增加对应member的score值
+zincrby key incr member
+// 返回指定元素在集合中的排名（下标）
+zrank key member
+// 集合中的元素按score从大到小排序
+zrevrank key start end
+// 类似lrange操作从集合中去除指定区间的元素 正序 从小到大
+zrange key start end
+// 返回的结果按score逆序的 从大到小
+zrevrange key start end
+// 返回集合中的score在给定区间的元素
+zrangebyscore key min max
+// 返回集合中score在给定区间的数量
+zcount key min max
+// 返回集合中元素的个数
+zcard key
+// 返回给定元素对应的score
+zscore key elemenr
+// 删除集合中排名在给定区间的元素
+zremrangebyrank key min max
+// 删除集合中score在给定区间的元素
+zremrangebyscore key min max
 ```
 # hash数据类型
-* hash数据类型存储的数据与mysql数据库中存储的一条记录极为相似。
+hash数据类型存储的数据与mysql数据库中存储的一条记录极为相似。
 
 ```
-hset key field value 设置hash field 为指定值，如果key不存在则创建
-hget key field 获取指定的 hash field
-hmget key field1 ...fieldN 获取全部指定的hash field
-hmset key field1 value1 同时设置hash的多个field
-hincrby key field integer 将指定的hash field 加上给定值
-hexists key field 测试指定 field 是否存在
-hdel key field 删除指定的 hash field
-hlen key  返回指定hash的field
-hkeys key 返回hash的所有field
-hvals key 返回hash的所有value
-hgetall key 返回hash的所有field和value
+// 设置hash field 为指定值，如果key不存在则创建
+hset key field value
+// 获取指定的 hash field
+hget key field
+// 获取全部指定的hash field
+hmget key field1 ...fieldN
+// 同时设置hash的多个field
+hmset key field1 value1
+// 将指定的hash field 加上给定值
+hincrby key field integer
+// 测试指定 field 是否存在
+hexists key field
+// 删除指定的 hash field
+hdel key field
+// 返回指定hash的field
+hlen key
+// 返回hash的所有field
+hkeys key
+// 返回hash的所有value
+hvals key
+// 返回hash的所有field和value
+hgetall key
 ```
 # redis持久化
 * redis较比其他同类型产品有个最大的好处可以进行持久化操作。
