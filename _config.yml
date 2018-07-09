@@ -7,7 +7,7 @@ title: Wangxiong's Notes
 subtitle: 始于技术，岂止于技术。
 description: 精于心，简于形
 author: Wang Xiong
-language: zh-Hans
+language: en
 timezone:
 
 # URL
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: wx
+theme: next
 
 # 主页设置
 index_generator:
