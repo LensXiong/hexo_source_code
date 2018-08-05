@@ -1,11 +1,11 @@
 ---
 layout: post
 title: 深入理解Nginx与PHP的交互机制
-date: 2017-11-12 10:32:24.000000000 +09:00
+date: 2017-11-24 10:32:24.000000000 +09:00
 categories:
 - 技术
 tags:
-- PHP
+- Nginx
 toc: true
 ---
 
