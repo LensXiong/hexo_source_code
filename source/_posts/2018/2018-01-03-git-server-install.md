@@ -42,12 +42,14 @@ Linux iZrj9hb9k9jtcpp85t8ryeZ 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:
 ```
 
 ## 检查并移除旧Git
-安装之前需要使用```yum remove git```卸载（安装后卸载也可以）。
+安装之前需要使用yum remove git卸载（安装后卸载也可以）。
+
 ```
 [root@wx ~]# git --version  ## 查看自带的版本
 git version 1.8.3
 [root@wx ~]# yum remove git ## 移除原来的版本
 ```
+
 # 安装方式
 ## 源码安装
 1、安装依赖包

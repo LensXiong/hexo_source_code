@@ -34,6 +34,9 @@ toc: true
 
 ![](/hexo_blog/img/article/beijing-w-town/音乐喷泉.jpg)
 
+<iframe height=298 width=310 src='https://share2.heiluo.com/share/link/513a1fe411f44622b128659bebb8103f' frameborder=0 'allowfullscreen'></iframe>
+
+
 # 小镇导览
 
 ![](/hexo_blog/img/article/beijing-w-town/小镇导览.jpg)
