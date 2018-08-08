@@ -10,7 +10,7 @@ toc: true
 ---
 
 ** 
-摘要：关于PHP的运行模式，我想你一定经常听到CGI、FastCGI、PHP-CGI、PHP-FPM。他们之间到底是什么样的关系？本文通过详细的介绍，主要分析了PHP常见的四种运行模式,﻿CGI通用网关接口(Common Gateway Interface)、﻿FastCGI常驻型CGI(Long-Live CGI) 、﻿CLI命令行模式(Command Line Interface)和﻿模块模式(Apache等Web服务器运行的模式) 。
+摘要：关于`PHP`的运行模式，我想你一定经常听到`CGI`、`FastCGI`、`PHP-CGI`、`PHP-FPM`。他们之间到底是什么样的关系？本文通过详细的介绍，主要分析了`PHP`常见的四种运行模式,﻿`CGI`通用网关接口`(Common Gateway Interface)`、﻿`FastCGI`常驻型`CGI(Long-Live CGI)`、﻿`CLI`命令行模式`(Command Line Interface)`和﻿模块模式(`Apache`等`Web`服务器运行的模式) 。
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -22,22 +22,22 @@ toc: true
 PHP的四层体系架构如下图所示：
 
 ![](/hexo_blog/img/article/php-operation-mode/01.jpeg)
-从图上可以看出，PHP从上到下是一个四层体系：
-* ``` Application```：这就是我们平时编写的PHP程序，通过不同的SAPI方式得到各种各样的应用模式，如通过Web Server实现Web应用、在命令行下以脚本方式运行等等。
-* ```SAPI```：SAPI全称是Server Application Programming Interface，也就是服务端应用编程接口，SAPI通过一系列钩子函数，使得PHP可以和外围交互数据，这是PHP非常优雅和成功的一个设计，通过SAPI成功的将PHP本身和上层应用解耦隔离，PHP可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。
-* ```Extensions```：围绕着Zend引擎，extensions通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过extension来实现，用户也可以根据需要实现自己的extension以达到功能扩展、性能优化等目的（如贴吧正在使用的PHP中间层、富文本解析就是extension的典型应用）。
-* ```Zend引擎```：Zend整体用纯C实现，是PHP的内核部分，它将PHP代码翻译（词法、语法解析等一系列编译过程）为可执行opcode处理，并实现相应的处理方法，实现了基本的数据结构（如hashtable、oo）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。
+从图上可以看出，`PHP`从上到下是一个四层体系：
+* `Application`：这就是我们平时编写的PHP程序，通过不同的SAPI方式得到各种各样的应用模式，如通过Web Server实现Web应用、在命令行下以脚本方式运行等等。
+* `SAPI`：SAPI全称是Server Application Programming Interface，也就是服务端应用编程接口，SAPI通过一系列钩子函数，使得PHP可以和外围交互数据，这是PHP非常优雅和成功的一个设计，通过SAPI成功的将PHP本身和上层应用解耦隔离，PHP可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。
+* `Extensions`：围绕着Zend引擎，extensions通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过extension来实现，用户也可以根据需要实现自己的extension以达到功能扩展、性能优化等目的（如贴吧正在使用的PHP中间层、富文本解析就是extension的典型应用）。
+* `Zend引擎`：Zend整体用纯C实现，是PHP的内核部分，它将PHP代码翻译（词法、语法解析等一系列编译过程）为可执行opcode处理，并实现相应的处理方法，实现了基本的数据结构（如hashtable、oo）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。
 
 # 关系图
 
 ![](/hexo_blog/img/article/php-operation-mode/02.png)
 # 概念基础
-*  ```Web Server ```：指Apache、Nginx、IIS、Lighttpd、Tomcat等服务器。
-*  ```Web Application```：指PHP、Java、Asp.net等应用程序。
-*  ```CGI```：是 Web Server 与 Web Application 之间数据交换的一种协议。
-*  ```FastCGI```：同 CGI，是一种通信协议，但比 CGI 在效率上做了一些优化。同样，SCGI 协议与 FastCGI 类似。
-*  ```PHP-CGI```：是 PHP （Web Application）对 Web Server 提供的 CGI 协议的接口程序。
-*  ```PHP-FPM```：是 PHP（Web Application）对 Web Server 提供的 FastCGI 协议的接口程序，额外还提供了相对智能一些任务管理。
+*  `Web Server `：指Apache、Nginx、IIS、Lighttpd、Tomcat等服务器。
+*  `Web Application`：指PHP、Java、Asp.net等应用程序。
+*  `CGI`：是 Web Server 与 Web Application 之间数据交换的一种协议。
+*  `FastCGI`：同 CGI，是一种通信协议，但比 CGI 在效率上做了一些优化。同样，SCGI 协议与 FastCGI 类似。
+*  `PHP-CGI`：是 PHP （Web Application）对 Web Server 提供的 CGI 协议的接口程序。
+*  `PHP-FPM`：是 PHP（Web Application）对 Web Server 提供的 FastCGI 协议的接口程序，额外还提供了相对智能一些任务管理。
 
 
 总结：
