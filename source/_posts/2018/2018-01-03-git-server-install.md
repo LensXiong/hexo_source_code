@@ -16,11 +16,6 @@ toc: true
 <The rest of contents | 余下全文>
 
 
-# 参考文档
->[官方文档](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
->[GitHub源码](https://github.com/git/git/releases)
->[Kernel.org网站](https://mirrors.edge.kernel.org/pub/software/scm/git/)
-
 # 准备工作
 
 ## 系统环境
@@ -287,3 +282,9 @@ drwxr-xr-x 2 root root 4096 1月 5 10:16 hooks
 [root@wx ~]# chown -R git:git /home/git/lensxiong.git/
 ```
 
+# 参考文档
+>[官方文档](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
+
+>[GitHub源码](https://github.com/git/git/releases)
+
+>[Kernel.org网站](https://mirrors.edge.kernel.org/pub/software/scm/git/)
