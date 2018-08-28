@@ -11,6 +11,7 @@ toc: true
 
 ** 
 摘要：关于`PHP`的运行模式，我想你一定经常听到`CGI`、`FastCGI`、`PHP-CGI`、`PHP-FPM`。他们之间到底是什么样的关系？本文通过详细的介绍，主要分析了`PHP`常见的四种运行模式,﻿`CGI`通用网关接口`(Common Gateway Interface)`、﻿`FastCGI`常驻型`CGI(Long-Live CGI)`、﻿`CLI`命令行模式`(Command Line Interface)`和﻿模块模式(`Apache`等`Web`服务器运行的模式) 。
+![](/hexo_blog/img/article/php-operation-mode/01.jpeg)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -19,9 +20,6 @@ toc: true
 
 # 架构体系
 
-PHP的四层体系架构如下图所示：
-
-![](/hexo_blog/img/article/php-operation-mode/01.jpeg)
 从图上可以看出，`PHP`从上到下是一个四层体系：
 * `Application`：这就是我们平时编写的PHP程序，通过不同的SAPI方式得到各种各样的应用模式，如通过Web Server实现Web应用、在命令行下以脚本方式运行等等。
 * `SAPI`：SAPI全称是Server Application Programming Interface，也就是服务端应用编程接口，SAPI通过一系列钩子函数，使得PHP可以和外围交互数据，这是PHP非常优雅和成功的一个设计，通过SAPI成功的将PHP本身和上层应用解耦隔离，PHP可以不再考虑如何针对不同应用进行兼容，而应用本身也可以针对自己的特点实现不同的处理方式。
