@@ -1,5 +1,5 @@
 layout: post
-title:  深入解析 Cookie 技术
+title:  关于 Cookie 技术
 date: 2017-04-05 09:32:24.000000000 +09:00
 description:
 categories:

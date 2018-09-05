@@ -35,7 +35,7 @@ Zend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies
 
 ```
 [root@wangxiong ~]# php -i |grep configure  
-Configure Command =>  './configure'  '--prefix=/usr/local/php7' '--with-config-file-path=/usr/local/php/etc' '--with-pdo-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--enable-fpm' '--enable-static' '--enable-maintainer-zts' '--enable-inline-optimization' '--enable-sockets' '--enable-wddx' '--enable-zip' '--enable-calendar' '--enable-bcmath' '--enable-soap' '--with-zlib' '--with-iconv' '--with-gd' '--with-xmlrpc' '--enable-mbstring' '--with-curl' '--with-freetype-dir=/usr/local/freetype' '--with-openssl' '--disable-fileinfo' '--with-iconv=/usr/local/libiconv' '--enable-ftp' '--enable-session' '--with-mysql-sock=/tmp/mysql.sock'
+Configure Command =>  './configure'  '--prefix=/usr/local/php7' '--with-config-file-path=/usr/local/php/etc' '--with-pdo-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--enable-fpm' '--enable-static' '--enable-maintainer-zts' '--enable-inline-optimization' '--enable-sockets' '--enable-wddx' '--enable-zip' '--enable-calendar' '--enable-bcmath' '--enable-soap' '--with-zlib' '--with-iconv' '--with-gd' '--with-xmlrpc' '--enable-mbstring' '--with-curl' '--with-freetype-dir=/usr/local/freetype' '--with-openssl' '--disable-fileinfo' '--with-iconv=/usr/local/libiconv' '--enable-ftp' '--enable-phar''--enable-session' '--with-mysql-sock=/tmp/mysql.sock'
 ```
 
 # PHP 源码下载
@@ -75,7 +75,7 @@ Configure Command =>  './configure'  '--prefix=/usr/local/php7' '--with-config-f
 # 源码安装
 ① 进入php源码目录指定编码参数：
 ```
-[root@wangxiong ~]# './configure'  '--prefix=/usr/local/php7' '--with-config-file-path=/usr/local/php/etc' '--with-pdo-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--enable-fpm' '--enable-static' '--enable-maintainer-zts' '--enable-inline-optimization' '--enable-sockets' '--enable-wddx' '--enable-zip' '--enable-calendar' '--enable-bcmath' '--enable-soap' '--with-zlib' '--with-iconv' '--with-gd' '--with-xmlrpc' '--enable-mbstring' '--with-curl' '--with-freetype-dir=/usr/local/freetype' '--with-openssl' '--disable-fileinfo' '--with-iconv=/usr/local/libiconv' '--enable-ftp' '--enable-session' '--with-mysql-sock=/tmp/mysql.sock'
+[root@wangxiong ~]# './configure' '--prefix=/usr/local/php7' '--with-config-file-path=/usr/local/php7/etc' '--with-pdo-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--enable-fpm' '--enable-static' '--enable-maintainer-zts' '--enable-inline-optimization' '--enable-sockets' '--enable-wddx' '--enable-zip' '--enable-calendar' '--enable-bcmath' '--enable-soap' '--with-zlib' '--with-iconv' '--with-gd' '--with-xmlrpc' '--enable-mbstring' '--enable-phar'  '--enable-pcntl' '--with-curl' '--with-freetype-dir=/usr/local/freetype' '--with-openssl' '--disable-fileinfo' '--with-iconv=/usr/local/libiconv' '--enable-ftp' '--enable-session' '--with-mysql-sock=/tmp/mysql.sock'
 ```
 ② 执行命令 
 ```

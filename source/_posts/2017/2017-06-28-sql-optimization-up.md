@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL优化原理(上)
+title: MySQL优化原理 (一)
 date: 2017-06-28 08:32:24.000000000 +09:00
 categories:
 - 技术

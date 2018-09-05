@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux命令-1
+title: Linux基础命令
 date: 2016-11-05 08:32:24.000000000 +09:00
 categories:
 - 技术

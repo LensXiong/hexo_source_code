@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Javascript基础-1
+title: Javascript基础 (一)
 date: 2017-02-20 10:32:24.000000000 +09:00
 categories:
 - 技术

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis 学习笔记 (上)
+title: Redis 学习笔记
 date: 2016-12-09 08:32:24.000000000 +09:00
 categories:
 - 技术

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 面向对象基础-1
+title: 面向对象基础 
 date: 2016-10-23 08:32:24.000000000 +09:00
 categories:
 - 技术
