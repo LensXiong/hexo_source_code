@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PHP的运行模式
+title: 【PHP核心】PHP的运行模式
 date: 2018-07-04 17:02:24.000000000 +09:00
 categories:
 - 技术
