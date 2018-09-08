@@ -117,7 +117,7 @@ T_CONSTANT_ENCAPSED_STRING
 具体所代表的意思如下：
 
 ```
- (
+(
 
             // Token ID (在Zend内部该Token的对应码)，也就是"词"ID
             [0] => 323
@@ -127,10 +127,9 @@ T_CONSTANT_ENCAPSED_STRING
 
              // 所在的位置,行数
             [2] => 2
-        )
+)
 
 // <?php, <? or <%
-
 T_OPEN_TAG
 
 // echo  
