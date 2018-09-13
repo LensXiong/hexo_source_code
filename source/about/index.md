@@ -4,7 +4,7 @@ date: 2018-09-08 23:23:27
 type: "about"
 ---
 
->我是王雄，是程序员，也是文艺青年，我爱编程，也爱生活。
+>我是王雄，是程序员，也是[斜杠青年](https://wiki.mbalib.com/zh-tw/%E6%96%9C%E6%9D%A0%E9%9D%92%E5%B9%B4)，我爱编程，也爱生活。
 
 ![](https://raw.githubusercontent.com/LensXiong/hexo_blog/master/img/common/background-cover.png)
 
@@ -16,7 +16,7 @@ type: "about"
 
 个人关于博客的选择，也经历过许多阶段。
 
-2015年，开始用[`PHP`](http://php.net/)写自己的博客系统，后来从[`WordPress` ](https://wordpress.org/)转到[ `Ghost`](https://ghost.org/) ，从[`Jekyll`](https://jekyllrb.com/)转到[`Hexo`](https://hexo.io/)。
+2015年，开始用[`PHP`](http://php.net/)写自己的博客系统，后来从[`WordPress`](https://wordpress.org/)转到[`Ghost`](https://ghost.org/) ，从[`Jekyll`](https://jekyllrb.com/)转到[`Hexo`](https://hexo.io/)。
 
 其实搭建什么样的博客并不重要，最终目的其实还是想专注于博客内容。
 
