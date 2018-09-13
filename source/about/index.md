@@ -6,7 +6,7 @@ type: "about"
 
 >我是王雄，是程序员，也是文艺青年，我爱编程，也爱生活。
 
-![](/hexo_blog/img/common/background-cover.png)
+![](https://raw.githubusercontent.com/LensXiong/hexo_blog/master/img/common/background-cover.png)
 
 # 关于博客
 
@@ -56,7 +56,7 @@ type: "about"
 
 主要工作业绩：
 
-> 完成平台三端及后台管理系统的所有研发和管理工作，包括但不限于[Web端](https://www.imtou.com/)、[APP端](https://itunes.apple.com/cn/app/id1192214049)、[Wap端](https://m.imtou.com/)和[后台管理系统](https://www.imtou.com/aht337/admin/user/login/index)；
+> 完成平台三端及后台管理系统的所有研发和管理工作，包括但不限于[Web端](https://www.imtou.com/)、[APP端](https://itunes.apple.com/cn/app/id1192214049)、[Wap端](https://m.imtou.com/)和后台管理系统；
 
 > 完成网贷平台合规整改及备案的整改准备工作(168条细则)，其中主要包括[接入银行存管系统](https://www.imtou.com/reveal/putonrecord/index.html)、[信息系统安全等级保护三级认证](https://www.imtou.com/reveal/putonrecord/index.html)、[公安机关网站备案](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502035111)、接入百融风控系统、IT信息安全风险评估报告等工作；
 
