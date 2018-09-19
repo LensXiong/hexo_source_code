@@ -92,11 +92,12 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: / || home
+  主页: / || home
   archives: /archives/ || archive
   about: /about/ || user
   tags: /tags/ || tags
   categories: /categories/ || th
+  首页: http://wwxiong.com || home 
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -128,8 +129,8 @@ scheme: Pisces
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
 
-  主页: http://wwxiong.com || address-book
-  导航: http://wwxiong.com/navigation/index.html || bars
+  Jekyll: http://wwxiong.com || address-book
+  Navbar: http://wwxiong.com/navigation/index.html || bars
   GitHub: https://github.com/LensXiong || github
   E-Mail: mailto:lensxiong@gmail.com || envelope
 
