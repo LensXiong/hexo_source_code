@@ -92,6 +92,11 @@ type: "about"
 > Talk is cheap, show me the code. （Linus Torvalds）
 > Stay away from your comfortable zone. （Jeff Atwood）
 
+# 联系我
+除了在这里, 你也可以在Twitter: [@AlanOutlier](https://twitter.com/AlanOutlier), 或者Github: [@Lensxiong](https://github.com/LensXiong)上找到我。
+
+内容交流或建议请联系E-mail：lensxiong@gmail.com。
+
 # 博客声明
 
 本博客属个人所有，不涉及商业目的。
