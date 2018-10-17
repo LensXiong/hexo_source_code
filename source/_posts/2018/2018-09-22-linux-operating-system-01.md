@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 【Linux 系统】目录结构、命令全称、命令技巧
-date: 2018-09-30 20:09:24.000000000 +09:00
+date: 2018-09-22 20:09:24.000000000 +09:00
 categories:
 - 技术
 tags:
@@ -11,7 +11,7 @@ toc: true
 
 ** 
 摘要：既然选择用`Linux`，为何不用的深入一些。作为一名`PHP`开发者，掌握基础的`Linux`命令是远远不够的，本系列文章将重新回顾和思考`Linux`相关知识，其中也包括基础知识，后期也会逐步深入`Linux`更多底层的相关知识。本篇文章重新整理了`Linux`的目录结构说明；汇总了基本命令的英文全称，主要是方便自身用于理解并掌握命令，而不是一味的死记硬背命令缩写，何况死记硬背的知识容易忘；最后也汇总了目前在运用`Linux`命令时能提高效率的一些技巧，方便自身学习和回顾。下图给出了基本文件系统的总体概念（图片是在 `Paul Gardner` 的 `CC BY-SA` 许可下提供的）。
-![](/hexo_blog/img/article/linux-operation-sysytem/dir.jpeg)
+![](/hexo_blog/img/article/linux-operation-sysytem/linux-operation-system.jpeg)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
