@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【MySQL高级】索引优化分析（一）
+title: 【MySQL高级】索引优化分析（二）
 date: 2018-12-28 13:09:24.000000000 +09:00
 categories:
 - 技术
@@ -96,6 +96,7 @@ INSERT INTO t3 (id,`other_column`) VALUES (3,'');
 explain select t2.* from t1,t2,t3 where t1.id = t2.id and t1.id = t3.id and t1.other_column = '';
 ```
 执行结果如下图所示：
+![index-optimization-01](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/01.jpg?raw=true)
 
 ② id不同，如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行。
 
@@ -105,6 +106,7 @@ explain select t2.* from t2 where t2.id = (select t1.id from t1 where t1.id = (s
 ```
 
 执行结果如下图所示：
+![index-optimization-02](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/02.jpg?raw=true)
 
 ③ id相同不同，同时存在。
 
@@ -113,6 +115,8 @@ explain select t2.* from t2 where t2.id = (select t1.id from t1 where t1.id = (s
 -- id相同又不同，同时存在
 explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2 where s1.id = t2.id;
 ```
+![index-optimization-03](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/03.jpg?raw=true)
+
 ### select_type
 
 查询类型`select_type`主要用于区别普通查询、联合查询、子查询等复杂查询，分类和说明如下所示：
@@ -135,7 +139,6 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 ` type`显示查询使用了何种类型，总共七种类型，从最好到最差，具体类型及说明如下所示：
 
 |类型|说明|
-
 |--|--|
 |system|表只有一行记录（等于MySQL自带的系统表），这是const类型的特例，平时不会出现，可以忽略|
 |const|表示通过索引一次就找到了，const用于primary key或者unique索引|
@@ -155,6 +158,7 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 
 ### key
 显示`MySQL`在查询中实际使用的索引，若没有使用索引，显示为`NULL`。
+![index-optimization-04](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/04.jpg?raw=true)
 
 > 查询中若使用了覆盖索引，则该索引和查询的`SELECT`字段重合。（覆盖索引指的是创建的索引字段和查询的字段一致）
 
@@ -162,16 +166,19 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 表示索引中使用的字节数，可通过该列计算查询中使用的索引的长度。在不损失精确性的情况下，长度越短越好。
 
 `key_len`显示的值为索引字段的最大可能长度，并非实际使用长度，即`key_len`是根据表定义计算而得，不是通过表内检索出的。
+![index-optimization-05](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/05.jpg?raw=true)
 
 ### ref
 
 该字段显示索引的哪一列被使用了，有可能为一个常量。简单来讲，就是指哪些列或常量被用于查找索引列上的值。
+![index-optimization-06](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/06.jpg?raw=true)
 
 上图所示，根据`table`和`key`字段可知，`t1`表的`idx_col1_col2`被充分使用；通过`ref`可知，`t1`表的`col1`匹配`t2`表的`col1`，`t1`表的`col2`匹配一个常量，即`const`等于`ac`。
 
 ### rows
 
 根据表统计信息及索引选用情况，大致估算出最终找到所需记录需要读取的行数。
+![index-optimization-07](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/07.jpg?raw=true)
 
 通过以上示例，未建立复合索引`idx_col1_col2`前，`MySQL`优化器查询的行数为640+1=641条数据，建立复合索引后，可将优化器的查询行数降低至195+4=199条。
 
@@ -191,12 +198,14 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 ① Using filesort
 
 `MySQL`会对数据使用一个外部的索引排序，而不是按照表内的索引顺序进行读取。`MySQL`中无法利用索引完成的排序操作称为“文件排序”。
+![index-optimization-08](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/08.jpg?raw=true)
 
 由上图可知，虽然两次查询的结果是相同的，但实现方式却是有很大的区别。两次的区别在于第一次使用了`Using filesort`，第二次的效率较高。
 
 ② Using temporary
 
 `MySQL`在对查询结果排序时，使用临时表保存中间结果，常见于`order by` 排序`和group by `分组查询。
+![index-optimization-09](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/09.jpg?raw=true)
 
 使用临时表后的执行速度比文件内排序更慢。通过上图第一次中可见`Using temporary`和`Using filesort`，原因是因为所创建的索引为`col1`和`col2`，`group by`时却直接用到了`col2`，没有按照索引的顺序进行排序，优化为第二次的语句，可见效率得到提高。
 
@@ -207,6 +216,7 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 `Using index`表示相应的`select`操作中使用了覆盖索引（`Convering Index`），避免了表的数据行，效率比较好。
 如果同时出现了`Using where`，表明索引被用来执行索引键值的查找。
 如果没有同时出现`Using where`，表明索引被用来读取数据而非执行查找动作。
+![index-optimization-10](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/10.jpg?raw=true)
 
 覆盖索引的两种理解方式：
 
@@ -219,6 +229,7 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 ④ Using where
 
 表示`MySQL`服务器在存储引擎搜到记录后进行“后过滤”（`Post-filter`），如果查询未能使用索引，`Using where`的作用只是提醒我们`MySQL`将用`where`子句来过滤结果集。
+![index-optimization-11](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/11.jpg?raw=true)
 
 ⑤ Using join buffer
 使用了连接缓存。
@@ -228,6 +239,7 @@ explain select t2.* from (select t3.id from t3 where t3.other_column = '') s1,t2
 案例分析：
 
 针对以下案例，请分析出`MySQL`的执行顺序：
+![index-optimization-12](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-02/12.jpg?raw=true)
 
 分析：
 执行顺序1：`id`为4的行，`select_type`为`union`，说明第四个`select`是`union`里的第二个`select`，最先执行【select name,id from t2】。

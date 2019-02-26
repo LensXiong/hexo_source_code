@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -107,8 +105,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="4956">
-                <caret line="236" column="106" lean-forward="false" selection-start-line="236" selection-start-column="106" selection-end-line="236" selection-end-column="106" />
+              <first_editor relative-caret-position="2940">
+                <caret line="140" column="7" lean-forward="false" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -147,6 +145,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>avatar</find>
+      <find>type</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -286,12 +285,12 @@
       <workItem from="1536412758620" duration="2312000" />
       <workItem from="1536416783072" duration="13000" />
       <workItem from="1551146765008" duration="3276000" />
-      <workItem from="1551150775380" duration="1705000" />
+      <workItem from="1551150775380" duration="2756000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7306000" />
+    <option name="totallyTimeSpent" value="8357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1393" height="877" extended-state="0" />
@@ -548,8 +547,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="4956">
-            <caret line="236" column="106" lean-forward="false" selection-start-line="236" selection-start-column="106" selection-end-line="236" selection-end-column="106" />
+          <first_editor relative-caret-position="2940">
+            <caret line="140" column="7" lean-forward="false" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
