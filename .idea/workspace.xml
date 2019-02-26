@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" afterPath="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,13 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="avatar.gif" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/next/source/images/avatar.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -96,12 +90,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018-12-04-mysql-index-optimization-01.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2018-12-04-mysql-index-optimization-01.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="237">
-                <caret line="84" column="6" lean-forward="false" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
+              <first_editor relative-caret-position="246">
+                <caret line="84" column="129" lean-forward="false" selection-start-line="84" selection-start-column="129" selection-end-line="84" selection-end-column="129" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2018-12-28-mysql-index-optimization-02.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="4956">
+                <caret line="236" column="106" lean-forward="false" selection-start-line="236" selection-start-column="106" selection-end-line="236" selection-end-column="106" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -157,6 +164,7 @@
         <option value="$PROJECT_DIR$/source/_posts/2018/2018-10-29-mysql-logical-architecture.md" />
         <option value="$PROJECT_DIR$/source/_posts/2018/2018-11-17-mysql-sql-joins.md" />
         <option value="$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md" />
+        <option value="$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md" />
       </list>
     </option>
   </component>
@@ -278,12 +286,12 @@
       <workItem from="1536412758620" duration="2312000" />
       <workItem from="1536416783072" duration="13000" />
       <workItem from="1551146765008" duration="3276000" />
-      <workItem from="1551150775380" duration="1072000" />
+      <workItem from="1551150775380" duration="1705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6673000" />
+    <option name="totallyTimeSpent" value="7306000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1393" height="877" extended-state="0" />
@@ -529,8 +537,19 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-04-mysql-index-optimization-01.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="237">
-            <caret line="84" column="6" lean-forward="false" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
+          <first_editor relative-caret-position="246">
+            <caret line="84" column="129" lean-forward="false" selection-start-line="84" selection-start-column="129" selection-end-line="84" selection-end-column="129" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2018/2018-12-28-mysql-index-optimization-02.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="4956">
+            <caret line="236" column="106" lean-forward="false" selection-start-line="236" selection-start-column="106" selection-end-line="236" selection-end-column="106" />
             <folding />
           </first_editor>
           <second_editor />

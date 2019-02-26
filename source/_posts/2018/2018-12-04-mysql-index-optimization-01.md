@@ -82,7 +82,7 @@ ALTER TABLE table_name ADD FULLTEXT index_name(column_list);
 `MySQL`支持的索引类型，主要有`B-Tree`索引、`Hash`索引、`R-Tree`（空间数据）索引、`Full-Text`全文索引等，其中主要介绍`B-Tree`索引的检索原理：
 
 ## 初始化介绍
-![检索原理]()
+![检索原理](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-index-optimization-01/01.jpg?raw=true)
 如上图所示的一颗`B+`树，浅蓝色的称为磁盘块，每个磁盘块包含几个数据项（深蓝色所示）和指针（黄色所示）。如磁盘块1包含数据项17和35，包含指针P1、P2、P3，P1表示小于17的磁盘块，P2表示在17和35之间的磁盘块，P3表示大于35的磁盘块。真实的数据存在于叶子节点即3、5、9、10、13、15、23、29、36、60、75、79、90、99。非叶子节点不存储真实的数据，只存储指引搜索方向的数据项，如17、35并不真实存在于数据表。
 
 ## 查找过程
