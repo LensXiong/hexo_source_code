@@ -11,6 +11,7 @@ toc: true
 
 ** 
 摘要：﻿本篇文章为`MySQL`高级篇系列的开篇，主要是从理论和自身的工作实际出发，去探索高性能的`MySQL` 知识，从基础出发，一步一步构建自己的知识体系。知识主要来自于《高性能MySQL》第三版，官方标准手册以及高级讲师的讲解，自身的业务实践。本篇主要是对整个`MySQL`逻辑架构图的介绍，如果能在头脑中构建出一幅`MySQL`各组件之间如何协同工作的架构图，将非常有助于深入理解`MySQL`服务器的相关知识。最后针对存储引擎`MyISAM`和`InnoDB`的区别进行简要的对比。
+![逻辑架构图](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-logical-architecture/01.png?raw=true)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -18,7 +19,7 @@ toc: true
 # 逻辑架构图
 
 由上到下分为四层：
-![逻辑架构图](https://github.com/LensXiong/hexo_blog/blob/master/img/article/xss/1.png?raw=true)
+![逻辑架构图](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-logical-architecture/01.png?raw=true)
 
 ## 连接层
 
