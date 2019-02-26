@@ -18,8 +18,7 @@ toc: true
 
 # 逻辑架构图
 
-由上到下分为四层：
-![逻辑架构图](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-logical-architecture/01.png?raw=true)
+通过以上`MySQL`逻辑架构图可知，由上到下分为连接层、服务层、引擎层、存储层共四层。
 
 ## 连接层
 
@@ -68,7 +67,6 @@ toc: true
 ```
 
 `MyISAM`和`InnoDB`的区别：
-
 
 |对比项|MyISAM|InnoDB|
 |-| :- | :-: | -: |
