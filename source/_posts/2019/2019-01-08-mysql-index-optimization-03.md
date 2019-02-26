@@ -41,6 +41,7 @@ INSERT INTO `article`(`author_id`,`category_id`,`views`,`comments`,`title`,`cont
 ```
 EXPLAIN SELECT id,author_id FROM article WHERE `category_id` = 1 AND `comments` > 1 ORDER BY views DESC LIMIT 1;
 ```
+![index-optimization-01](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/01.jpg?raw=true)
 未建索引的情况下，从上图可以看到上面的查询语句进行全表扫描（`All`）和文件内排序（`Using filesort`）。显然，这种查询是最坏的情况，优化是必须的。
 
 ```
@@ -49,6 +50,7 @@ CREATE index idx_article_ccv on article(`category_id`,`comments`,`views`);
 SHOW INDEX FROM `article`;
 EXPLAIN SELECT id,author_id FROM article WHERE `category_id` = 1 AND `comments` > 1 ORDER BY views DESC LIMIT 1;
 ```
+![index-optimization-02](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/02.jpg?raw=true)
 
 经过创建索引后再次执行`SQL`语句，会发现`type`访问类型由全表扫描`ALL`变成了`rang`范围，但是扫描的时候依然进行了文件内排序（`Using filesort`）。
 > 我们已经建立了索引，为什么没有用？
@@ -60,7 +62,7 @@ CREATE INDEX idx_article_cv ON `article`(category_id,views);
 SHOW INDEX FROM `article`;
 EXPLAIN SELECT id,author_id FROM article WHERE `category_id` = 1 AND `comments` > 1 ORDER BY views DESC LIMIT 1;
 ```
-
+![index-optimization-03](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/03.jpg?raw=true)
 经过第三次的分析并重新创建了索引，可将`Extra`中的`Using filesort`优化处理掉。
 
 ## 两表优化案例
@@ -125,9 +127,9 @@ INSERT INTO book(`card`) VALUES(FLOOR(1+(RAND() * 20)));
 INSERT INTO book(`card`) VALUES(FLOOR(1+(RAND() * 20)));
 ```
 未建索引时，`Explain`执行计划中的`type`为`ALL`：
-
+![index-optimization-04](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/04.jpg?raw=true)
 左连接时分别加左表索引和右表索引时的执行计划如下：
-
+![index-optimization-05](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/05.jpg?raw=true)
 左连接的特性决定左表必须全部都有，右表最好建立索引，查询优化效率最好。
 同样，右连接的特性决定如何从左表搜索行，右边一定都会有，左边的表一定要建立索引。
 > 结论：左连接，右表建索引；右连接，左表建索引。
@@ -171,7 +173,7 @@ INSERT INTO phone(card) VALUES(floor(1 + (RAND() * 20)));
 ALTER TABLE `phone` ADD INDEX p(`card`);
 EXPLAIN SELECT * FROM class LEFT JOIN book ON class.card = book.card LEFT JOIN phone ON book.card = phone.card;
 ```
-
+![index-optimization-06](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-index-optimization-03/06.jpg?raw=true)
 结论：
 ① 左连接时右表建索引，右连接时左边建索引的原则。
 ② 尽可能减少`Join`语句中的嵌套循环总次数，永远记住用小表驱动大表。
