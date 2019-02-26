@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ﻿【MySQL高级】七种 Joins 文氏图解
+title: ﻿【MySQL高级】七种 SQL JOINS 文氏图解
 date: 2018-11-17 21:09:24.000000000 +09:00
 categories:
 - 技术
@@ -11,7 +11,7 @@ toc: true
 
 **
 摘要：在进行索引优化、查询截取分析、锁机制等高级部分之前，需要对基本的核心知识点进行重点归纳和总结。首先，需要明确手写`SQL`顺序和机读`SQL`顺序是不一样的，只有理解`SQL`的执行顺序才能写出较好的`SQL`语句。再次，依次介绍了内连接`INNER JOIN`，左连接`LEFT JOIN`，右连接`RIGHT JOIN`，全连接` FULL OUTER JOIN`等`SQL JOINS`的文氏图，通过详细的案例进行对比和说明，目的在于深入理解各种`SQL JOINS`的相关知识。
-![七种SQL JOINS]()
+![七种SQL Joins 文氏图解](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-sql-joins/02.png?raw=true)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -40,6 +40,7 @@ LIMIT
 ```
 
 机读`SQL`数据：
+![机读SQL顺序](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-sql-joins/01.jpg?raw=true)
 
 ```
 FROM 
@@ -64,9 +65,9 @@ LIMIT
 ```
 
 # 七种Join文氏图
+![七种SQL Joins 文氏图解](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2018/mysql-sql-joins/02.png?raw=true)
 
 建表语句：
-
 
 ```
 -- 创建表A
