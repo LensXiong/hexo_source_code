@@ -1,7 +1,7 @@
 ---
 layout: post
-title:【MySQL高级】查询截取分析-查询优化
-date: 2019-01-24 08:09:24.000000000 +09:00
+title: 【MySQL高级】查询截取分析-查询优化
+date: 2019-01-29 08:09:24.000000000 +09:00
 categories:
 - 技术
 tags:
@@ -23,7 +23,7 @@ toc: true
 ③ `SHOW PROFILE` 查询`SQL`在`MySQL`服务器里面的执行细节和生命周期情况。
 ④ `MySQL`数据库服务器的参数调优。
 
-# 小表驱动大表
+# 小表驱动大表（`IN`和`EXISTS`）
 
 优化原则：小表驱动大表，即小的数据集驱动大的数据集。使用`IN`和`EXISTS`进行说明。
 
@@ -107,7 +107,7 @@ select * from TableB b where b.`deptId` in (select id from TableA a);
 ```
 select * from TableB b where exists (select 1 from TableA a where b.`deptId` = a.id);
 ```
-
+![mysql-query-optimization-01](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-query-optimization/01.jpg?raw=true)
 
 # 排序优化（order by ）
 `MySQL`支持`Index`和`FileSort`两种方式的排序，`Index`是指扫描索引本身完成排序，`FileSort`是扫描文件内容进行排序，`Index`效率高于`FileSort`。
@@ -129,11 +129,11 @@ INSERT INTO tblA(age,birth) VALUES(26,NOW());
 ```
 CREATE INDEX idx_A_ageBirth ON tblA(age,birth);
 ```
-
+![mysql-query-optimization-02](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-query-optimization/02.jpg?raw=true)
 第一种情况和第二种情况，未产生文件排序；第三种情况和第四种情况因为创建的索引顺序为`age`、`index`，未按照创建索引的顺序排序会导致查询时进行文件排序。
 >  注：在进行`ORDER BY` 子句，尽量使用`Index`方式排序，避免使用`FileSort`方式排序。
 
-
+![mysql-query-optimization-03](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-query-optimization/03.jpg?raw=true)
 以上四种情况，只有第三种没有用到`FileSort`文件排序，效率是最高的。第一种和第二种情况没有满足索引创建时的最佳左前缀原则，直接忽略了第一层索引，跳到第二层索引。第四种情况是因为索引要升序都升序，要降序都降序，有升有降，导致索引部分失效。
 > 尽可能在索引列上完成排序操作，遵照索引创建时的最佳左前缀原则。
 
@@ -175,7 +175,7 @@ order by 能使用索引最左前缀
 -- WHERE a = const ORDER BY a,d /*d不是索引的一部分*/
 -- WHERE a in(..) ORDER BY b,c /*对于排序来说，多个相等条件也是范围查询*/
 ```
-
+![mysql-query-optimization-04](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-query-optimization/04.jpg?raw=true)
 # 分组优化（group by）
 
 ① `group by` 实质是先排序后进行分组，遵照索引创建的最佳左前缀。
