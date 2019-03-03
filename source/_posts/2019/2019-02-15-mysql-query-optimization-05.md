@@ -11,7 +11,7 @@ toc: true
 
 **
 摘要：本篇文章主要介绍了如何使用存储过程批量插入大量数据，其中包括创建函数、创建存储过程、调用存储过程、删除存储过程。关于`MySQL`的存储过程，将在后期的学习中不断归纳和总结，具体细节暂时不做过多说明。这里只需关注是如何利用存储过程批量插入大量的数据即可。
-![存储过程插入批量数据-01]()
+![存储过程插入批量数据-01](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-process-insert-data/01.jpg?raw=true)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -41,10 +41,7 @@ dname VARCHAR(20) NOT NULL DEFAULT "",
 loc VARCHAR(13) NOT NULL DEFAULT ""
 )ENGINE=INNODB DEFAULT CHARSET=GBK;
 
-
-
 # 建表emp
-
 CREATE TABLE emp(
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 empno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '编号',
@@ -186,7 +183,6 @@ loc VARCHAR(13) NOT NULL DEFAULT ""
 )ENGINE=INNODB DEFAULT CHARSET=GBK;
 
 # 建表emp
-
 CREATE TABLE emp(
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 empno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '编号',
@@ -200,7 +196,6 @@ deptno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '部门编号'
 )ENGINE=INNODB DEFAULT CHARSET=GBK;
 
 # 创建随机字符串
-
 DELIMITER $$
 CREATE FUNCTION rand_string(n INT) RETURNS VARCHAR(255)
 BEGIN
@@ -215,7 +210,6 @@ BEGIN
 END $$
 
 # 创建随机数
-
 DELIMITER $$
 CREATE FUNCTION rand_num( )
 RETURNS INT(5)
@@ -226,7 +220,6 @@ RETURN i;
 END $$
 
 # 创建emp表中插入数据的存储过程
-
 DELIMITER $$
 CREATE PROCEDURE insert_emp(IN START INT(10),IN max_num INT(10))
 BEGIN
@@ -241,7 +234,6 @@ COMMIT;
 END $$
 
 # 创建dept表中插入数据的存储过程
-
 DELIMITER $$
 CREATE PROCEDURE insert_dept(IN START INT(10),IN max_num INT(10))
 BEGIN
@@ -256,13 +248,11 @@ COMMIT;
 END $$
 
 # 调用存储过程
-
 CALL insert_dept(100,10);
 -- 50万条数据 macbook pro实际用时29秒
 CALL insert_emp(100001,500000);
 
 # 删除函数和存储过程
-
 DROP FUNCTION rand_num;
 DROP FUNCTION rand_string;
 DROP PROCEDURE insert_dept;
