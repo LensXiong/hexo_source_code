@@ -172,3 +172,4 @@ create index test_innodb_lock_b_ind on test_innodb_lock(b);
 ③ 尽可能减少检索条件，避免间隙锁。
 ④ 尽量控制事务大小，减少锁定资源和时间长度。
 ⑤ 尽可能低级别事务隔离。
+
