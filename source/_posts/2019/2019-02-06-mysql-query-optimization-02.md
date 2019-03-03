@@ -11,6 +11,7 @@ toc: true
 
 **
 摘要：慢查询日志是`MySQL`提供的一种日志记录，它是数据库调优的一个主要依据，通过分析慢查询日志我们可以对相关SQL语句变慢的原因进行进一步的分析。由于日志跟踪出来的文件是一个文本文件，查看起来费时费力，`MySQL`也提供了一个工具便于从文本文件里面查找的工具`mysqldumpslow`。本篇文章除了介绍慢查询日志的概念和具体参数，也重点介绍了`MySQL`分析日志工具`mysqldumpslow`。
+![慢查询日志-03](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-slow-query/03.jpg?raw=true)
 **
 <!-- more -->
 <The rest of contents | 余下全文>
@@ -39,7 +40,7 @@ mysql> SHOW VARIABLES LIKE '%slow_query_log%';
 ```
 mysql> set global slow_query_log = 1;
 ```
-
+![慢查询日志-01](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-slow-query/01.jpg?raw=true)
 > 第一次设置以后查看没有生效，先关闭数据库连接，再重新连接，再次查询就可以看到实际上是修改了。
 
 像`slow_query_log`这样的参数，`MySQL`官方并不推荐长时间开启，因为开启该参数会有一定的性能开销，上述方式开启只是临时开启，如果想永久生效，就必须修改配置文件`my.cnf`。
@@ -72,6 +73,8 @@ mysql> SHOW VARIABLES LIKE 'long_query_time%'
 mysql> set global long_query_time = 3;
 ```
 
+![慢查询日志-02](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-slow-query/02.jpg?raw=true)
+
 > 修改无效，需要重新连接或新开一个会话才能看到修改值。
 
 查看慢查询的条数：
@@ -80,6 +83,7 @@ mysql> show global status like '%Slow_queries%';
 ```
 # 日志分析工具
 在生产环境中，如果要手工分析日志，查找、分析`SQL`，显然是个体力活。`MySQL`提供了日志分析工具`mysqldumpslow`。
+
 |参数|说明|
 |--|--|
 |s|表示按照何种方式排序|
@@ -92,6 +96,8 @@ mysql> show global status like '%Slow_queries%';
 |at|平均查询时间|
 |-t|是top n的意思，即为返回前面多少条的数据|
 |-g|后边可以写一个正则匹配模式，大小写不敏感的|
+
+![慢查询日志-03](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/mysql-slow-query/03.jpg?raw=true)
 
 得到返回记录集最多的10个`SQL`：
 ```
