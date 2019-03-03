@@ -81,6 +81,7 @@ mysql> set global long_query_time = 3;
 ```
 mysql> show global status like '%Slow_queries%';
 ```
+
 # 日志分析工具
 在生产环境中，如果要手工分析日志，查找、分析`SQL`，显然是个体力活。`MySQL`提供了日志分析工具`mysqldumpslow`。
 
