@@ -30,13 +30,11 @@ toc: true
 默认情况下，`MySQL`数据库没有开启慢查询日志，需要手动设置参数`slow_query_log`。当然，如果不是调优需要的话，一般不建议启动该参数，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件。
 
 查看是否开启：
-
 ```
 mysql> SHOW VARIABLES LIKE '%slow_query_log%';
 ```
 
 设置开启：
-
 ```
 mysql> set global slow_query_log = 1;
 ```

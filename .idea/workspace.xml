@@ -30,8 +30,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-02-06-mysql-query-optimization-02.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="223">
-                <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <first_editor relative-caret-position="314">
+                <caret line="31" column="7" lean-forward="false" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -189,12 +189,12 @@
       <workItem from="1536416783072" duration="13000" />
       <workItem from="1551146765008" duration="3276000" />
       <workItem from="1551150775380" duration="8689000" />
-      <workItem from="1551619715394" duration="939000" />
+      <workItem from="1551619715394" duration="983000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15229000" />
+    <option name="totallyTimeSpent" value="15273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1393" height="877" extended-state="0" />
@@ -515,8 +515,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-02-06-mysql-query-optimization-02.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="223">
-            <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <first_editor relative-caret-position="314">
+            <caret line="31" column="7" lean-forward="false" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
