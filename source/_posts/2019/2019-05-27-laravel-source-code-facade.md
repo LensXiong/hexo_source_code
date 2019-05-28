@@ -16,7 +16,7 @@ toc: true
 <!-- more -->
 <The rest of contents | 余下全文>
 
-﻿> 当我们写出 `Route::get ()` 这样的语句时，到底发生了什么，为什么我们可以这么写？
+>当我们写出 `Route::get ()` 这样的语句时，到底发生了什么，为什么我们可以这么写？
 
 本文以`Route` 为例，详细分析了门面运行的原理，其他的门面运行实质上也是相同的道理。
 `Route` 门面类文件位置如下：
@@ -180,7 +180,7 @@ public static function createFromBase(SymfonyRequest $request)
         return $request;
     }
 ```
-`handle()`方法位于`vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php`中，是整个`HTTP`处理的核心内容。该方法内容如下：
+`handle()` 方法位于 `vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php`中，是整个`HTTP`处理的核心内容。该方法内容如下：
 ```
 public function handle($request)
     {
