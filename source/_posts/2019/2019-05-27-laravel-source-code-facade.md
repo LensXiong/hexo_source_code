@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ﻿【Laravel源码分析】Facade 的工作原理
+title: ﻿【Laravel 源码分析】Facade 的工作原理
 date: 2019-05-27 08:09:24.000000000 +09:00
 categories:
 - 技术
