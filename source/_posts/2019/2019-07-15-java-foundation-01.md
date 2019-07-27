@@ -31,19 +31,12 @@ toc: true
 
 当实现一个应用程序时（不使用 `ORM`），我们可能会写特别多数据访问层的代码，从数据库保存数据、修改数据、删除数据，而这些代码都是重复的。而使用 `ORM` 则会大大减少重复性代码。
 
-常见的 `ORM` 框架：`Mybatis`（`ibatis`）、`Hibernate`、`Jpa`
+常见的 `ORM` 框架：`Mybatis`（`ibatis`）、`Hibernate`
 
 ### 什么是Hibernate?
 
 `Hibernate`是一个开放源代码的对象关系映射(`ORM`)框架，它对`JDBC`进行了非常轻量级的对象封装，并将`POJO`与数据库表建立映射关系，是一个全自动的`ORM`框架，`Hibernate`可以自动生成`SQL`语句，自动执行，通过使用对象编程思维来操纵数据库。
 
-### 什么是JDBC?
-
-> Java数据库连接，（Java Database Connectivity，简称JDBC）是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，提供了诸如查询和更新数据库中数据的方法。
-
-```java
-JDBC stands for Java Database Connectivity. JDBC is a Java API to connect and execute the query with the database. It is a part of JavaSE (Java Standard Edition). JDBC API uses JDBC drivers to connect with the database.
-```
 
 ### 什么是POJO？
 
@@ -53,13 +46,22 @@ JDBC stands for Java Database Connectivity. JDBC is a Java API to connect and ex
 POJO stands for Plain Old Java Object. It is an ordinary Java object, not bound by any special restriction other than those forced by the Java Language Specification and not requiring any class path. POJOs are used for increasing the readability and re-usability of a program
 ```
 
+### 什么是JDBC?
+
+> Java数据库连接，（Java Database Connectivity，简称JDBC）是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，提供了诸如查询和更新数据库中数据的方法。
+
+```java
+JDBC stands for Java Database Connectivity. JDBC is a Java API to connect and execute the query with the database. It is a part of JavaSE (Java Standard Edition). JDBC API uses JDBC drivers to connect with the database.
+```
+
+
 ### JPA与Hibernate的关系
 
 `JPA`和`Hibernate`的关系就像`JDBC`和`JDBC`驱动的关系，`JPA`是规范，`Hibernate`除了作为`ORM`框架之外，它也是一种`JPA`规范的实现。就像`JDBC`规范不能驱动底层数据库一样，`JPA`不能取代`Hibernate`，如果使用`JPA`规范进行数据库操作，底层需要`Hibernate`作为其实现类完成数据持久化工作。
 
 > `JPA` 实质上是一种 `ORM` 规范，注意不是 `ORM` 框架——因为 `JPA` 并未提供 `ORM` 实现，它只是制订了一些规范，提供了一些编程的 `API` 接口，但具体实现则由服务厂商来提供实现。比如像`Hibernate` ,`Toplink`等`ORM`框架的实现厂商。
 
-什么是JTA?
+### 什么是JTA?
 
 > `Java` 事务 `API`（`Java Transaction API`，简称`JTA` ） 是一个`Java`企业版的应用程序接口，在`Java`环境中，允许完成跨越多个`XA`资源的分布式事务。简单来讲，它是一个分布式事务管理的解决方案。
 
