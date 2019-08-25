@@ -216,7 +216,7 @@ public class MapDemo02 {
 4、把学生添加到集合。
 5、 两种方式遍历集合（键找值、键值对对象找键和值）。
 具体代码：
-* 学生类
+学生类
 ```
 public class Student {
  private String name;
@@ -247,7 +247,7 @@ public class Student {
  }
 }
 ```
-*  实现类
+实现类
 ```
 public class HashMapDemo {
  public static void main(String[] args) {
@@ -308,7 +308,7 @@ public class HashMapDemo {
 4、把学生添加到集合。
 5、遍历集合，通过键找值的方式。
 具体代码：
-* 学生类
+学生类
 ```
 public class Student {
  private String name;
@@ -352,7 +352,7 @@ public class Student {
  }
 }
 ```
-* 实现类
+实现类
 ```
 public class HashMapDemo {
  public static void main(String[] args) {
@@ -516,11 +516,8 @@ public class HashMapIncludeArrayListDemo {
 #### 统计字符串中每个字符出现的次数
 
 案例需求：键盘录入一个字符串，要求统计字符串中每个字符串出现的次数。
-
 案例举例：键盘录入`aababcabcdabcde`	在控制台输出：`a(5)b(4)c(3)d(2)e(1)`。
-
 实现思路：
-
 1、键盘录入一个字符串，用`Scanner`对象的`nextLine`方法。
 2、创建`HashMap`集合，键是`Character`，值是`Integer`。
 3、遍历字符串，得到每一个字符。

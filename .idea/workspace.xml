@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/themes/next/source/images/avatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/_posts/2019/2019-08-24-java-foundation-04.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2019/2019-08-24-java-foundation-04.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" afterDir="false" />
@@ -65,8 +66,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-08-24-java-foundation-04.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="116">
-                <caret line="537" selection-start-line="537" selection-end-line="537" />
+              <first_editor relative-caret-position="3735">
+                <caret line="249" selection-start-line="249" selection-end-line="249" />
               </first_editor>
               <second_editor />
             </state>
@@ -132,6 +133,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,8 +164,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -213,18 +214,19 @@
       <workItem from="1560611260625" duration="1063000" />
       <workItem from="1564210423830" duration="1295000" />
       <workItem from="1564212174414" duration="182000" />
-      <workItem from="1566657592702" duration="1789000" />
+      <workItem from="1566657592702" duration="1961000" />
+      <workItem from="1566698881298" duration="100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28155000" />
+    <option name="totallyTimeSpent" value="28427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1393" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29089564" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29533678" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -351,8 +353,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-08-24-java-foundation-04.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="116">
-            <caret line="537" selection-start-line="537" selection-end-line="537" />
+          <first_editor relative-caret-position="3735">
+            <caret line="249" selection-start-line="249" selection-end-line="249" />
           </first_editor>
           <second_editor />
         </state>
