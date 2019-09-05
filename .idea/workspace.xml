@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/images/avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" afterDir="false" />
@@ -41,8 +40,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="368">
-                <caret line="420" column="21" selection-start-line="420" selection-start-column="21" selection-end-line="420" selection-end-column="21" />
+              <first_editor relative-caret-position="390">
+                <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               </first_editor>
               <second_editor />
             </state>
@@ -106,7 +105,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1401" />
     <option name="height" value="877" />
@@ -204,18 +203,18 @@
       <workItem from="1566740802872" duration="456000" />
       <workItem from="1566895882775" duration="934000" />
       <workItem from="1567041085234" duration="985000" />
-      <workItem from="1567653323544" duration="359000" />
+      <workItem from="1567653323544" duration="821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32177000" />
+    <option name="totallyTimeSpent" value="32639000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1401" height="877" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30686694" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30905077" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -232,7 +231,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.11686747" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.12356688" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -396,8 +395,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="368">
-            <caret line="420" column="21" selection-start-line="420" selection-start-column="21" selection-end-line="420" selection-end-column="21" />
+          <first_editor relative-caret-position="390">
+            <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           </first_editor>
           <second_editor />
         </state>

@@ -12,6 +12,7 @@ toc: true
 **
 摘要：本篇文章主要阐述了关于多线程的基础知识。首先，通过类比介绍了关于进程和线程的基本概念，进程是资源分配的最小单位，线程是资源调度的最小单位。之后介绍了`Java`中两种实现多线程的方式，一种是继承`Thread`类，一种是实现`Runnable`接口，实现`Runnable`接口更好的解决了`Java`单继承的局限性。再次，通过案例介绍了设置线程和获取线程的方法、线程控制的基本方法，其中主要包括`sleep`、`join`和`setDaemon`。紧接着，阐述了线程调度分为分时调度模型和抢占式调度模型两种方式，而`Java`使用的是抢占式调度模型，`Java`中的线程具有1-10的优先级，优先级越高，不一定就能抢到执行权，只是代表该线程抢占`CPU`时间片的几率更大。最后，主要分析了线程完整生命周期的六种状态，`NEW`新建、`RUNNABLE`运行、`BLOCKED`阻塞、`WAITING`无时限等待、`TIMED_WAITING`有时限等待、`TERMINATED`终止。
 **
+
 ![](https://github.com/LensXiong/hexo_source_code/blob/master/img/technology/2019/java/thread/thread-life.png?raw=true)
 
 <!-- more -->
