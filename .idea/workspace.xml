@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/images/avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" afterDir="false" />
@@ -29,8 +28,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="438">
-                <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
+              <first_editor relative-caret-position="45">
+                <caret line="3" column="18" selection-end-line="194" />
               </first_editor>
               <second_editor />
             </state>
@@ -197,12 +196,12 @@
       <workItem from="1567653323544" duration="1672000" />
       <workItem from="1567659949382" duration="6000" />
       <workItem from="1568890685654" duration="11000" />
-      <workItem from="1568903966041" duration="377000" />
+      <workItem from="1568903966041" duration="458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33884000" />
+    <option name="totallyTimeSpent" value="33965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -402,8 +401,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="438">
-            <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="18" selection-end-line="194" />
           </first_editor>
           <second_editor />
         </state>
