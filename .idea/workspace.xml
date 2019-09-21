@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3a4deee-fd57-4fd1-9d93-d5c002b4a140" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-11-java-foundation-thread-02.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/next/source/images/avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" afterDir="false" />
@@ -25,11 +26,11 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md">
+        <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-11-java-foundation-thread-02.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="45">
-                <caret line="3" column="18" selection-end-line="194" />
+              <first_editor relative-caret-position="218">
+                <caret line="104" column="152" selection-start-line="104" selection-start-column="152" selection-end-line="104" selection-end-column="152" />
               </first_editor>
               <second_editor />
             </state>
@@ -46,6 +47,7 @@
       <find>mixin</find>
       <find>lodash</find>
       <find>commonmarker</find>
+      <find>98</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -92,13 +94,13 @@
         <option value="$PROJECT_DIR$/source/_posts/2019/2019-07-15-java-foundation-01.md" />
         <option value="$PROJECT_DIR$/source/_posts/2019/2019-09-04-java-foundation-thread-01.md" />
         <option value="$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md" />
+        <option value="$PROJECT_DIR$/source/_posts/2019/2019-09-11-java-foundation-thread-02.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1401" />
-    <option name="height" value="877" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -106,7 +108,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -137,6 +138,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,18 +198,20 @@
       <workItem from="1567653323544" duration="1672000" />
       <workItem from="1567659949382" duration="6000" />
       <workItem from="1568890685654" duration="11000" />
-      <workItem from="1568903966041" duration="458000" />
+      <workItem from="1568903966041" duration="549000" />
+      <workItem from="1568942798352" duration="3000" />
+      <workItem from="1569072817406" duration="1123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33965000" />
+    <option name="totallyTimeSpent" value="35182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32188842" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3304721" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -224,7 +228,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.12289157" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.12289157" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -401,8 +405,18 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-19-mysql-normal-format.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="45">
-            <caret line="3" column="18" selection-end-line="194" />
+          <first_editor relative-caret-position="240">
+            <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2019/2019-09-11-java-foundation-thread-02.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="218">
+            <caret line="104" column="152" selection-start-line="104" selection-start-column="152" selection-end-line="104" selection-end-column="152" />
           </first_editor>
           <second_editor />
         </state>
