@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ﻿【网络连接】【网络连接】DNS解析过程
+title: ﻿【网络连接】DNS解析过程
 date: 2019-10-05 09:49:24.000000000 +09:00
 categories:
 - 技术
@@ -13,7 +13,7 @@ toc: true
 摘要：当我们在浏览器中输入一段`URL`并回车后，浏览器能够解析网址并生成 `HTTP` 消息，但是由于浏览器本身并不具备将消息发送到网络中的功能，浏览器需要委托操作系统向 `DNS` 服务器查询 `Web` 服务器的 `IP` 地址。应用程序（`WEB`浏览器）是如何与 `DNS` 服务器进行交互的呢？要想回答这个问题，我们需要了解一些基础的`IP`知识、`Socket` 库、`DNS` 解析器、`DNS`服务器的工作原理。通过了解这些基础知识，我们明白浏览器通过调用`Socket `库中的一个程序组件解析器，解析器通过协议栈和网卡与`DNS` 服务器进行交互，`DNS` 服务器优先查询本地缓存，然后依次从根域服务器、顶级域 `DNS` 服务器、权威 `DNS` 服务器递归查询找到最终对应域名的`IP`地址返回给浏览器。
 **
 
-![]()
+![](https://raw.githubusercontent.com/LensXiong/hexo_source_code/master/img/technology/2019/networks/networks-02.jpeg)
 
 <!-- more -->
 <The rest of contents | 余下全文>
