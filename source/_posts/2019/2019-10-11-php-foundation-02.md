@@ -489,6 +489,37 @@ var_dump(array_slice($arr, -2, 1, TRUE)); // [27 => 666]
 ?>
 ```
 
+示例2：获取指定键名之前的数组。
+
+```
+<?php
+$data = ['first' => 1, 'second' => 2, 'third' => 3];
+function beforeKey($array, $key) {
+    $keys = array_keys($array); // [0 => 'first', 1 => 'second', 2 => 'third']
+    $len = array_search($key, $keys); // 返回键名
+    return array_slice($array, 0, $len); // 返回起始位置和结束位置的一段数组
+}
+var_dump(beforeKey($data, 'first'));// []
+var_dump(beforeKey($data, 'second')); // ['first' => 1]
+var_dump(beforeKey($data, 'third')); // ['first' => 1, 'second' => 2]
+?>
+```
+示例3：获取指定键名之后的数组。
+
+```
+<?php
+$data = ['first' => 1, 'second' => 2, 'third' => 3];
+function afterKey($array, $key) {
+    $keys = array_keys($array);
+    $offset = array_search($key, $keys);
+    return array_slice($array, $offset + 1);
+}
+var_dump(afterKey($data, 'first')); // ['second' => 2, 'third' => 3]
+var_dump(afterKey($data, 'second')); // ['third' => 3]
+var_dump(afterKey($data, 'third')); // []
+?>
+```
+
 # [array_splice](https://www.php.net/manual/zh/function.array-splice.php)
 
 `array_splice` — 数组移除后重新拼接（去掉数组中的某一部分并用其它值取代）
