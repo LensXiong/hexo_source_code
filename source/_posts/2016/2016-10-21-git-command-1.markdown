@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Git命令汇总
+title: Git 命令汇总
 date: 2016-10-21 08:32:24.000000000 +09:00
 categories:
 - 技术

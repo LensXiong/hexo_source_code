@@ -20,7 +20,7 @@ toc: true
 
 2009年09月09日，我遇见了生命中很重要的她，那时我们17岁。
 
-![](https://github.com/LensXiong/hexo_source_code/blob/master/img/article/marriage-certificate/1.jpg?raw=true)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/other/marriage-certificate/1.jpg)
 
 很庆幸能在美好懵懂的17岁，就遇到了对的人。
 
@@ -40,7 +40,7 @@ toc: true
 
 2017年07月21日，我们结束八年的爱情长跑，开启了另一个新的起点。
 
-![](https://github.com/LensXiong/hexo_source_code/blob/master/img/article/marriage-certificate/2.jpg?raw=true)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/other/marriage-certificate/2.jpg)
 
 八年前，你信我。
 
@@ -87,7 +87,7 @@ toc: true
 
 > 在亲朋好友的见证下，签下相守一生的契约，从那一刻开始，两个人的夫妻关系就正式确立，这一天要重视，要隆重且正式去执行这一天所需的事情。
 
-![](https://github.com/LensXiong/hexo_source_code/blob/master/img/article/marriage-certificate/3.jpg?raw=true)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/other/marriage-certificate/3.jpg)
 
 领证的那天，从北京到西安，我们刚下火车。
 
@@ -135,7 +135,7 @@ toc: true
 
 进行宣誓仪式的时候，她是哭着读完了誓词的。
 
-![](https://github.com/LensXiong/hexo_source_code/blob/master/img/article/marriage-certificate/4.jpg?raw=true)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/other/marriage-certificate/4.jpg)
 
 > 今天我们自愿结为夫妻，将共同肩负起婚姻赋予我们的责任和义务：
 互敬互爱，互谅互让，上孝父母，下教子女，勤勉工作，奉献社会；
@@ -144,6 +144,6 @@ toc: true
 
 > 我们一定坚守今天的誓言!相亲相爱、白头偕老、牵手一生！
 
-![](https://github.com/LensXiong/hexo_source_code/blob/master/img/article/marriage-certificate/5.jpg?raw=true)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/other/marriage-certificate/5.jpg)
 
 不同的爱情经历，想必会有不同的领证心得。

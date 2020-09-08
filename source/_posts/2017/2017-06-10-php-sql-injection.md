@@ -20,7 +20,7 @@ TalkTalk的信息泄漏事件导致约15万人的敏感信息被暴露，涉嫌�
 
 这项技术就是大名鼎鼎的SQL注入，它曾经被用来窃取世界卫生组织员工的信息，偷过华尔街日报数据，甚至还攻击过美国联邦政府机构。
 
-![](/hexo_blog/img/article/sql-injection/2.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/safe/sql-injection/2.png)
 
 如果你没有被这张图片震撼到，说明你离黑客的道路暂时还很遥远。
 
@@ -35,13 +35,12 @@ SQL（Structured Query Language）: SQL是一种用来和数据库交互的语�
 
 SQL注入(SQL Injection)：攻击者把SQL命令插入到Web表单的输入域或页面请求的字符串，欺骗服务器执行恶意的SQL命令。
 
-![](/hexo_blog/img/article/sql-injection/1.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/safe/sql-injection/1.png)
 
 上图是[Xkcd](https://xkcd.com/)上的一幅漫画。该学生的姓名:
 
-```'
+```sql
 Robert'); DROP TABLE students;--'
-
 ```
 
 最终结果会导致students表被删除。
@@ -59,7 +58,7 @@ SQL注入可以说是一种漏洞，也可以说是一种攻击。
 
 一般来说，SQL注入一般存在于形如：
 
-```
+```sql
 http://wwxiong.com/test.php?id=1
 ```
 等带有参数的PHP动态网页中。
@@ -85,20 +84,20 @@ http://wwxiong.com/test.php?id=1
 假设某个Web应用有一个登录页面，这个登录页面控制着用户是否有权访问应用，它要求用户输入一个名称和密码。
 
 登录页面中输入的内容将直接用来构造动态的SQL命令，或者直接用作存储过程的参数，例如：
-```
+```sql
 $query = 'SELECT * from Users WHERE login = ' . $username . ' AND password = ' . $password;
 ```
 
 攻击者在用户名输入框中输入:
-```
+```sql
 ' or '1'='1
 ```
 攻击者在密码输入框中输入：
-```
+```sql
 ' or '1'='1'
 ```
 用户输入的内容提交给服务器之后，服务器运行上面的代码构造出查询用户的SQL命令，但由于攻击者输入的内容非常特殊，所以最后得到的SQL命令变成：
-```
+```sql
 SELECT * from Users WHERE login = '' or '1'='1' AND password = '' or '1'='1'；
 ```
 服务器执行查询或存储过程，将用户输入的身份信息和服务器中保存的身份信息进行对比。
@@ -135,12 +134,12 @@ SELECT * from Users WHERE login = '' or '1'='1' AND password = '' or '1'='1'；
 
 对于PHP编程语言，在[php.ini](http://www.cnphp.info/php-ini-config-file-chinese-translate.html)文件中可以配置一些涉及安全性的设置，通过这些设置可以增加SQL的注入难度，降低SQL注入风险。主要的从以下几个方面设置：
 ① 开启[magic_quotes_gpc](http://php.net/manual/zh/info.configuration.php#ini.magic-quotes-gpc)魔术函数
-```
+```sql
 magic_quotes_gpc = On
 ```
 作用：判断解析用户提示的数据，如包括有POST、GET、COOKIE过来的数据增加转义字符"\"，以确保这些数据不会引起程序，特别是数据库语句因为特殊字符引起的污染而出现致命的错误。
 ② 关闭PHP中注册为全局变量配置
-```
+```sql
 register_globals = Off 
 ```
 [register_globals](http://www.cnblogs.com/wawahaha/p/4820591.html)的意思是注册为全局变量，所以当On的时候，传递过来的值会被直接的注册为全局变量直接使用，而Off的时候，我们需要到特定的数组里去得到它。
@@ -149,18 +148,18 @@ register_globals = Off
 
 ③ 开启PHP[安全模式](https://yq.aliyun.com/ziliao/8621)
 
-```
+```sql
 safe_mode = On
 ```
 ④ 将用户可操作的文件限制在某目录下
-```
+```sql
 open_basedir = On
 ```
 
 使用[open_basedir](http://blog.csdn.net/fdipzone/article/details/54562656)可以限制程序可操作的目录和文件，提高系统安全性。但会影响I/O性能导致系统执行变慢，因此需要根据具体需求，在安全与性能上做平衡。
 
 ⑤ 关闭错误提示
-```
+```sql
 display_errors = Off
 ```
 

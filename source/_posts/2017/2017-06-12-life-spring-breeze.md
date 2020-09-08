@@ -16,7 +16,7 @@ reward: true
 <The rest of contents | 余下全文>
 
 # 引言
-![](/hexo_blog/img/article/spring-breeze/1.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/1.png)
 
 真正开始接触民谣大概是从2013年左立翻唱宋冬野的《董小姐》开始的，那时候的我抱着一把吉他就能弹一整天。
 
@@ -65,7 +65,7 @@ reward: true
 
 民谣歌曲一定是质朴中流露着诗意，诗意中流淌着深情，深情中埋藏着感动，而这份感动便来源于你我的平凡生活。
 
-![](/hexo_blog/img/article/spring-breeze/2.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/2.png)
 
 关于《春风十里》背后的故事，鹿先森是这样讲述的:
 
@@ -96,15 +96,15 @@ reward: true
 
 # 民谣吉他谱
 
-![](/hexo_blog/img/article/spring-breeze/3.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/3.png)
 
-![](/hexo_blog/img/article/spring-breeze/4.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/4.png)
 
 # Ukulele吉他谱
 
-![](/hexo_blog/img/article/spring-breeze/5.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/5.png)
 
-![](/hexo_blog/img/article/spring-breeze/6.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/vlog/music/spring-breeze/6.png)
 
 # 吉他弹唱
 

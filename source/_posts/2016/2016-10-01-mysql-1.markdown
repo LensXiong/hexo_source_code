@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL性能优化-基础篇
+title: 【MySQL优化】优化基础
 date: 2016-10-01 08:32:24.000000000 +09:00
 categories:
 - 技术

@@ -6,7 +6,7 @@ type: "about"
 
 >我是王雄，是程序员，也是[斜杠青年](https://wiki.mbalib.com/zh-tw/%E6%96%9C%E6%9D%A0%E9%9D%92%E5%B9%B4)，我爱编程，也爱生活。
 
-![](https://raw.githubusercontent.com/LensXiong/hexo_blog/master/img/common/background-cover.jpeg)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/Other/background-cover.jpeg)
 
 # 关于博客
 

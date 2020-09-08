@@ -66,7 +66,7 @@ alert("say something")
 ② 劫持流量实现恶意跳转。
 
 这个很简单，就是在网页中想办法插入一句像这样的语句：
-```
+```javascript
 <script>window.location.href="http://www.wwxiong.com";</script>
 ```
 
@@ -76,7 +76,7 @@ alert("say something")
 
 # XSS攻击的步骤
 
-![](/hexo_blog/img/article/xss/1.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/safe/xss/1.png)
 
 ① 攻击者以某种方式发送xss的http链接给目标用户
 

@@ -21,7 +21,7 @@ toc: true
 
 下图展示了MySQL的逻辑架构图。你必须深深的刻在你的脑海中。
 
-![](/hexo_blog/img/article/sql-optimization-up/1.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/mysql/sql-optimization-up/1.png)
 
 MySQL逻辑架构整体分为三层:
 
@@ -43,7 +43,7 @@ MySQL逻辑架构整体分为三层:
 
 下图展示了MySQL相关的模块和组件。
 
-![](/hexo_blog/img/article/sql-optimization-up/3.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/mysql/sql-optimization-up/3.png)
 
 各模块和组件之间负责的主要功能：
 
@@ -155,7 +155,7 @@ MySQL逻辑架构整体分为三层:
 
 > 当向MySQL发送一个请求的时候，MySQL到底做了些什么呢？
 
-![](/hexo_blog/img/article/sql-optimization-up/2.png)
+![](http://wwxiong.oss-cn-beijing.aliyuncs.com/blog-img/technology/mysql/sql-optimization-up/2.png)
 
 MySQL整个查询执行过程，总的来说分为6个步骤：
 

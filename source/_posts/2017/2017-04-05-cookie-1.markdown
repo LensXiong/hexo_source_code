@@ -21,11 +21,13 @@ toc: true 文章目录
 这些时候，就需要去记录客户端的连接状态，识别请求的状态等。为了解决类似的事情，就需要使用到了 Cookie。
 
 # Cookie 基础知识
+
 ## Cookie 机制
 HTTP协议是一种无状态、无连接的协议，不能在服务器上保持一次会话的连续状态信息。随着WWW的不断发展，HTTP的无状态性不能满足某些应用的需求，
 给Web服务器和客户端的操作带来种种不便。在此背景下，提出HTTP的状态管理机制——Cookie机制，它是对HTTP协议的一种补充，以保持服务器和客户端的连续状态。
 
 Cookie在远程浏览器端存储数据并以此跟踪和识别用户的机制。从实现上说，Cookie是存储在客户端上的一小段数据，浏览器（即客户端）通过HTTP协议和服务器端进行Cookie交互。
+
 ##  Cookie 技术
 Cookie是一种能够让网站Web服务器把少量数据储存到客户端的硬盘或内存里，或是从客户端的硬盘里读取数据的一种技术。
 所谓Cookie技术，是在浏览器端保存数据的一门技术，是浏览器的技术。也就是说将需要在一定会话周期内保存的数据，
@@ -37,7 +39,7 @@ PHP在Cookie技术中，承担的角色是负责决定在何时存入什么数�
 ## Cookie 文件
 Cookie文件是指在浏览某个网站时，由Web服务器的CGI脚本创建的存储在浏览器客户端计算机上的一个小文本文件，
 其格式为：
-```
+```php
 用户名@网站地址 ［数字］.txt。
 ```
 Cookie文件记录了用户的有关信息，如身份识别号码ID、密码、浏览过的网页、停留的时间、用户在Web站点购物的方式或用户访问该站点的次数等，
@@ -56,8 +58,9 @@ Cookie机制定义了两种报头：Set-Cookie报头和Cookie报头。
 Set-Cookie报头包含于Web服务器的响应头（ResponseHeader）中。
 
 Cookie报头包含在浏览器客户端请求头（RequestHeader）中。
-![http://mmbiz.qpic.cn/mmbiz/9YBWvqSs4WdxKstzlZxaroc3ibg3RUm1YkxW3EVSdr1jbtMY5h1gJWDAHka0OIQkJxh0p11dia8Mc2trGqpVM71g/640?tp=webp&wxfrom=5&wx_lazy=1](http://mmbiz.qpic.cn/mmbiz/9YBWvqSs4WdxKstzlZxaroc3ibg3RUm1YkxW3EVSdr1jbtMY5h1gJWDAHka0OIQkJxh0p11dia8Mc2trGqpVM71g/640?tp=webp&wxfrom=5&wx_lazy=1)
-Cookie的运行过程图:
+
+Cookie的运行过程:
+
 * 客户端在浏览器的地址栏中键入Web服务器的URL，浏览器发送读取网页的请求。
 * 服务器接收到请求后，产生一个Set-Cookie报头，放在HTTP报文中一起回传客户端，发起一次会话。
 * 客户端收到应答后，若要继续该次会话，则将Set-Cookie中的内容取出，形成一个Cookie.txt文件储存在客户端计算机里。
@@ -67,8 +70,9 @@ Cookie的运行过程图:
 一次网页请求，都可以传递已存在的Cookie文件，例如，浏览器的打开或刷新网页操作。
 
 #  Cookie 信息属性
+
 Cookie中保存的信息都是文本信息，在客户端和服务器端交互过程中，由键/值对组成 Cookie 信息被附加在HTTP消息头中传递。下面是一个 HTTP 头中 Cookie 的例子：
-```
+```php
 Set-Cookie: key = value; Path=/
 ```
 Cookie中存放的信息包含Cookie本身属性和用户自定义属性，一个Cookie只能包含一个自定义键/值对。
@@ -99,12 +103,12 @@ Cookie 可以在服务器端创建，然后将 Cookie 信息附加在HTTP消息�
 
 在PHP语言中，可利用PHP的内置函数，[setCookie()](http://php.net/manual/zh/function.setcookie.php)完成。
 
-```
+```php
 setCookie (变量名,变量值,过期时间,有效的服务器路径,有效域名/子域名,是否通过 HTTPS 安全连接,是否通过 HTTP 协议访问)
 ```
 
 例：创建名为 "user" 的 Cookie，并为它赋值 "Alan Outlier"，规定了此 cookie 在一小时后过期
-```
+```php
 setcookie("user", "Alan Outlier", time()+3600);
 ```
 > 注：在发送 Cookie 时，Cookie 的值会自动进行 URL 编码，在取回时进行自动解码。（为防止 URL 编码，使用 setrawcookie() 代替。）
@@ -112,7 +116,7 @@ setcookie("user", "Alan Outlier", time()+3600);
 
 因为Cookie是通过HTTP标头进行设置的，所以也可以直接使用header方法进行设置。
 
-```
+```php
 header("Set-Cookie:cookie_name=value");
 ```
 
@@ -123,7 +127,7 @@ Cookie除了可以在服务器端创建外，也可以在客户端的浏览器�
 
 ## Cookie 获取
 利用PHP的预定义超全局数组变量[ $_COOKIE ](http://php.net/manual/zh/reserved.variables.cookies.php)完成。每个元素就是一个浏览器请求时携带的 COOKIE 变量。下标为 COOKIE 变量名,值为 COOKIE 变量值。
-```
+```php
 if(isset($_COOKIE["user"]))
 echo"Welcome".$_COOKIE["user"]."!<br>";
 else
@@ -131,7 +135,7 @@ echo"Welcomeguest!<br>";
 ```
 ## Cookie 删除
 利用有效期删除 COOKIE 变量。
-```
+```php
 setcookie("user","",time()-3600);
 ```
 > 第三个参数的默认值为0，表示浏览器关闭才失效。
@@ -140,18 +144,18 @@ setcookie("user","",time()-3600);
 ### Cookie 变量名允许下标的形式
 通过利用setcookie的第一个参数进行标识名称中指定数组下标的形式设置。
 
-```
+```php
 setcookie("user[username]","wangxiong");
 setcookie("user[password]","*****");
 setcookie("user[email]","lensxiong@gmail.com");
 ```
 在设置成功之后形成 $_COOKIE数组元素时，PHP程序将其整理成一个数组结构，如果需要在PHP脚本中获取其值则需要使用$_COOKIE超全局数组。
 直接打印$_COOKIE['user']数组示例：
-```
+```php
 print_r($_COOKIE['user']); // Array ( [username] => wangxiong [password] => ***** [email] => lensxiong@gmil.com )
 ```
 通过遍历 $_COOKIE['user']数组示例：
-```
+```php
 foreach($_COOKIE["user"] as $key=>$value){
     //输出cookie数组中的二维键值对
     echo $key . ":" .$value,"\n";    // username:wangxiong password:***** email:lensxiong@gmil.com
@@ -161,7 +165,7 @@ foreach($_COOKIE["user"] as $key=>$value){
 通过利用 setcookie的第三个参数进行设置。
 
 默认的有效期（第三个参数的值为0），表示浏览器关闭会话周期结束:
-```
+```php
 setcookie("user[username]","wangxiong", 0);
 ```
 PHP 会在响应数据中，将 COOKIE 的失效时间告知给浏览器。
@@ -169,14 +173,14 @@ PHP 会在响应数据中，将 COOKIE 的失效时间告知给浏览器。
 当到达某个时间点时，此 COOKIE 变量会自动失效。
 
 通过PHP_INT_MAX设置 COOKIE 永久有效如下:
-```
+```php
 setcookie("user[username]","wangxiong", PHP_INT_MAX)
 ```
 ### COOKIE 变量的有效路径
 通过利用 ```setcookie``` 的第四个参数进行设置。
 
 设置变量的有效路径为站点根目录如下：
-```
+```php
 setcookie('name', 'wangxiong', 0 , '/');
 ```
 设置成 ``` / ``` 时，Cookie 对整个域名 domain 有效。 如果设置成 ``` /foo/ ```， Cookie 仅仅对 domain 中 ```/foo/``` 目录及其子目录有效（比如 ```/foo/bar/ ```）。
@@ -186,7 +190,7 @@ setcookie('name', 'wangxiong', 0 , '/');
 通过利用 ```setcookie``` 的第五个参数进行设置。
 
 设置所有的 ```wangxiong.me``` 都有效示例如下：
-```
+```php
 setcookie('name', 'wangxiong', 0 , '/', 'wangxiong.me');
 ```
 设置成子域名（例如 ```www.example.com）```，会使 Cookie 对这个子域名和它的三级域名有效（例如 ``` w2.www.example.com ```）。

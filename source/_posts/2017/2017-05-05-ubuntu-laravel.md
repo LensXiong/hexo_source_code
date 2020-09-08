@@ -19,68 +19,68 @@ reward: true
 # 安装LNMP环境（PHP7.1）
 ## 安装基础工具
 先进行软件源的更新操作：
-```
+```linux
 sudo apt-get update
 ```
 设置语言安装支持中文：
-```
+```linux
 sudo apt-get install -y language-pack-en-base
 ```
 命令设置语言环境：
-```
+```linux
 locale-gen en_US.UTF-8 locale
 ```
 安装vim编辑器、htop系统监控和进程管理软件、zip压缩文件的解压缩软件：
-```
+```linux
 sudo apt-get install -y vim htop git unzip
 ```
 安装 add-apt-repository工具，ubuntu 14下面需要安装这个包：
-```
+```linux
 sudo apt-get install software-properties-common
 ```
 将ppa/ondrej/php这个源添加到apt-get的源列表里面。加上LC_ALL=C.UTF-8是因为非utf-8下面会有一个bug：
-```
+```linux
 sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
 ```
 再一次更新软件源：
-```
+```linux
 sudo apt-get update
 ```
 ## 安装PHP相关
 安装php7.1：
-```
+```linux
 sudo apt-get -y install php7.1
 ```
 安装php7.1-mysql：
-```
+```linux
 sudo apt-get -y install php7.1-mysql
 ```
 安装PHPFastCGI管理器：
-```
+```linux
 sudo apt-get install php7.1-fpm
 ```
 
 安装php7.1的其它扩展：
-```
+```linux
 apt-get install php7.1-curl php7.1-xml php7.1-mcrypt php7.1-json php7.1-gd php7.1-mbstring
 ```
 
 ## 安装Nginx服务器
 运行以下命令：
-```
+```linux
 sudo apt-get -y install nginx
 ```
 
 ## 安装Mysql数据库
 运行以下命令：
-```
+```linux
 sudo apt-get -y install mysql-server-5.6
 ```
 
 # 配置环境，运行Laravel
 ## 编辑PHP的配置文件
 
-```
+```linux
 sudo vim /etc/php/7.1/fpm/php.ini
 ```
 vim命令输入/fix_pathinfo搜索，将cgi.fix_pathinfo=1改为cgi.fix_pathinfo=0:
@@ -89,21 +89,21 @@ vim命令输入/fix_pathinfo搜索，将cgi.fix_pathinfo=1改为cgi.fix_pathinfo
 
 ## 编辑Fpm的配置文件
 
-```
+```linux
 sudo vim /etc/php/7.1/fpm/pool.d/www.conf 
 ```
 找到listen = /run/php/php7.1-fpm.sock修改为listen = /var/run/php/php7.1-fpm.sock。当然，你也可以不修改，但必须前后一致，后面会用到这个配置。紧接着运行以下代码重启：
 
-```
+```linux
 sudo service php7.1-fpm restart
 ```
 ## 编辑Nginx的配置文件
 
-```
+```linux
 sudo vim /etc/nginx/sites-available/default
 ```
 
-```
+```linux
 listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
 
@@ -140,68 +140,65 @@ listen 80 default_server;
 ## 创建网站目录
 如果你还没有/var/www目录，运行mkdir /var/www，然后将Nginx的用户名和用户组www-data分配给它：
 
-```
+```linux
 sudo chown -R www-data:www-data   /var/www/laravel-ubuntu/
 ```
 
 ## 创建Laravel项目
 ### Git方式创建
 进入项目存放位置:
-```
+```linux
 cd /var/www/
 ```
 git 克隆：
 
-```
+```linux
 git clone  你的代码仓库路径
 ```
 再次给予目录权限，运行（在/var/www/laravel-ubuntu下面）：
-```
+```linux
 sudo chmod -R 775 storage/
 sudo chown -R www-data:www-data /var/www/laravel-ubuntu
 ```
 重点事项：
 检查nginx配置的root位置是否正确：
-```
+```linux
 root /var/www/var/www/laravel-ubuntu/public;
 ```
 storage 文件夹权限是否正确，否则在项目文件夹laravel-ubuntu下运行以下命令：
-```
+```linux
 sudo chmod -R 775 storage/
 ```
 注意 laravel-ubuntu 这个目录的所有者为: www-data:www-data，否则执行以下命令：
-```
+```linux
 sudo chown -R www-data:www-data   /var/www/laravel-ubuntu/
 ```
 重启fpm:
-```
+```linux
 sudo service php7.1-fpm restart
 ```
 重启nginx：
-```
+```linux
 sudo service nginx restart
 ```
 ### Composer方式创建
 composer的安装：
-```
- curl -sS https://getcomposer.org/installer | php
+```linux
+curl -sS https://getcomposer.org/installer | php
 ```
 
 全局使用composer:
-```
+```linux
 sudo mv composer.phar /usr/local/bin/composer
 ```
 
 > 注意：由于被墙的原因，第一条指令通常会失败,可以直接在composer官网下载composer.phar压缩包,然后再移动到 /usr/local/bin/composer
 
 composer来安装larvavel项目：
-```
+```linux
 cd /var/www
 composer create-project laravel/laravel larave-ubuntu --prefer-dist "5.1.*"
 ```
-# 配置和域名解析
-
-# 配置SSL证书
 
 # 参考文章
 
